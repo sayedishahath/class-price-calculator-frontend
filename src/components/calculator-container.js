@@ -77,7 +77,7 @@ const handleSubmit= async(e)=>{
         <div className='formContent'>
             <form onSubmit={handleSubmit}>
                 
-                    <div className="flex flex-col lg:flex-row justify-center gap-2">
+                    <div className="flex flex-col lg:flex-row justify-center gap-2 mb-2">
                         <div className="overflow-x-auto" >
                             <SchoolTable form={form} setForm={setForm}/>
                         </div>
@@ -88,7 +88,7 @@ const handleSubmit= async(e)=>{
                 
                 <ClassTable form={form} setForm={setForm}/>
             
-            <input type = "submit" value='save'/>
+            <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
             </form>
         </div>
     )

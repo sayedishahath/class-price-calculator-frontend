@@ -40,7 +40,7 @@ export default function DealDetailsTable({ form, setForm }) {
         3000) *
         1.1 -
       form.investementAmount / form.totalStudents).toFixed(2)
-    setForm({...form,minPricePerStudent:result})
+      setForm({...form, minPricePerStudent:result})
   }, [form]);
 
 
@@ -137,7 +137,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="minPricePerStudent"
                       name="minPricePerStudent"
-                      value={form.minPricePerStudent}
+                      value={isNaN(form.minPricePerStudent)?0:form.minPricePerStudent}
                       onChange={handleChange}
                     />
                     {/* // /form.totalStudents)+3000)*110)-(form.investementAmount/form.totalStudents) */}
