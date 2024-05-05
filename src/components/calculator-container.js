@@ -43,7 +43,7 @@ const [form,setForm] = useState({
 const handleSubmit= async(e)=>{
     e.preventDefault()
     try{
-        const res = await axios.post("http://localhost:3015/bill", form)
+        const res = await axios.post("http://65.1.106.79:3007/bill", form)
         alert('saved successfully')
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
@@ -55,7 +55,7 @@ const handleSubmit= async(e)=>{
         //     doc.save(`${form.schoolName}.pdf`)
         // })
         window.print()
-        // console.log(res.data)
+        console.log(res.data)
     }catch(err){
         alert(err.message)
         console.log(err)
