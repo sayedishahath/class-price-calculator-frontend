@@ -1,6 +1,6 @@
 import {useState} from  'react';
 export default function SchoolTable({form,setForm}){
-    const tableRowClasses = "border border-black p-2";
+    // const tableRowClasses = "border border-black p-2";
     const tableCellStyle = "px-6 py-4 whitespace-nowrap text-sm";
     const tableHeaderStyle = "font-medium text-zinc-900 text-left";
     const tableDataStyle = "text-zinc-500";;

@@ -50,7 +50,7 @@ export default function DealDetailsTable({ form, setForm }) {
   const calculateincludeGSTAmount = () => {
     const result = (form.minPricePerStudent * 1.18).toFixed(2)
     form.includeGSTAmount = result;
-    console.log("gst", form.includeGSTAmount);
+    // console.log("gst", form.includeGSTAmount);
     if(isNaN(result)){
         return "0"
     }
@@ -60,7 +60,7 @@ export default function DealDetailsTable({ form, setForm }) {
   const calculateminDealValue = () => {
     const result = (form.includeGSTAmount * form.totalStudents).toFixed(2)
     form.minDealValue = result;
-    console.log(form.minDealValue);
+    // console.log(form.minDealValue);
     if(isNaN(result)){
         return "0"
     }
@@ -97,7 +97,7 @@ export default function DealDetailsTable({ form, setForm }) {
   const calculateSingleTermPayment = () => {
     const result = (form.propsedDeal / form.paymentMode).toFixed(2)
     form.singleTermPayment = result;
-    console.log("prop", form.propsedDeal, "payment mode", form.paymentMode);
+    // console.log("prop", form.propsedDeal, "payment mode", form.paymentMode);
     if(isNaN(result)||(result=='Infinity')){
         return "0"
     }

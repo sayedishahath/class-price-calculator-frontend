@@ -55,9 +55,10 @@ const handleSubmit= async(e)=>{
         //     doc.save(`${form.schoolName}.pdf`)
         // })
         window.print()
-        console.log(res.data)
+        // console.log(res.data)
     }catch(err){
-        alert(err.data)
+        alert(err.message)
+        console.log(err)
     }
 }
 

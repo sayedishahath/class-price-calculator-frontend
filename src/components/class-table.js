@@ -15,7 +15,7 @@ export default function ClassTable({form,setForm}){
         if (isNaN(totalStudents)) {
             return "-"
         } else {
-            console.log(totalStudents);
+            // console.log(totalStudents);
             form.totalStudents=totalStudents;
             return totalStudents
         }
@@ -58,14 +58,14 @@ export default function ClassTable({form,setForm}){
     
     const calculateMRPPerClass = (classData) => {
         return classData.MRP * classData.students;
-    };
+    }
 
     const calculateQuotedPricePerClass = (classData)=>{
         return classData.propsalPricePerStudent*classData.students;
     }
 
     const calculateMinCostPerClass = (classData)=>{
-        return form.includeGSTAmount
+        return form.includeGSTAmount*classData.students
     }
 
     const calculateDiscount = (classData)=>{
