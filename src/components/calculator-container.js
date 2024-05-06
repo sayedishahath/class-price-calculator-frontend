@@ -26,11 +26,11 @@ const [form,setForm] = useState({
     singleTermPayment:0,
     firstPayment:0,
     classes:[
-        { class: 6, MRP: 12999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 7, MRP: 13999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 8, MRP: 14999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 9, MRP: 15999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 10, MRP: 16999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0},
+        { class: 6, MRP: 13999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 7, MRP: 14999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 8, MRP: 15999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 9, MRP: 16999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 10, MRP: 17999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0},
         { class: 11, MRP: 22999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
         { class: 12, MRP: 24999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 }
     ],
@@ -42,24 +42,7 @@ const [form,setForm] = useState({
 
 const handleSubmit= async(e)=>{
     e.preventDefault()
-    try{
-        const res = await axios.post("http://65.1.106.79:3007/bill", form)
-        alert('saved successfully')
-        // const capture = document.querySelector('.formContent')
-        // html2canvas(capture).then((canvas)=>{
-        //     const imgData = canvas.toDataURL('img/png')
-        //     const doc = new jsPDF('l','mm','a3')
-        //     const componentWidth = doc.internal.pageSize.getWidth()
-        //     const componentHeight = doc.internal.pageSize.getHeight()
-        //     doc.addImage(imgData,'PNG',0,0,componentWidth,componentHeight)
-        //     doc.save(`${form.schoolName}.pdf`)
-        // })
-        window.print()
-        console.log(res.data)
-    }catch(err){
-        alert(err.message)
-        console.log(err)
-    }
+    window.print()
 }
 
 // const saveAsPDF = () => {
