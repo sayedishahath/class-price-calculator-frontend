@@ -188,7 +188,7 @@ export default function ClassTable({form,setForm}){
                         <td className={`${yellowBgClass} ${cellClass}`} colSpan={2}>
                             <input type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calculateTotalMinCostPerClass()} onChange={handleChangeTotal}/>
                         </td>
-                        <td className={`${yellowBgClass} ${cellClass}`} colSpan={2}>
+                        <td className={`${form.totalQuatedCostPerClass < form.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
                             <input type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calculateTotalQuatedCostPerClasss()} onChange={handleChangeTotal}/>
                         </td>
                     </tr>

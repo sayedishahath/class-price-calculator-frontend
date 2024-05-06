@@ -192,7 +192,7 @@ export default function DealDetailsTable({ form, setForm }) {
                   <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="bufferValue">Buffer Value</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${tableCellStyle} ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
