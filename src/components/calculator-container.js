@@ -72,7 +72,7 @@ const handleSubmit= async(e)=>{
                 
                 <ClassTable form={form} setForm={setForm}/>
             
-            <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
+            {/* <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/> */}
             </form>
         </div>
     )
