@@ -191,10 +191,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${firstTableCellStyle} py-4 ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} py-3 ${tableHeaderStyle}`}>
                     <label htmlFor="bufferValue">Buffer Value</label>
                   </td>
-                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-4 ${tableDataStyle}`}>
+                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-3 ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -206,12 +206,12 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${firstTableCellStyle} py-4 ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} py-3 ${tableHeaderStyle}`}>
                     <label htmlFor="totalDiscountValue">
                       Total Deal Discount
                     </label>
                   </td>
-                  <td className={`${firstTableCellStyle} py-4 ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} py-3 ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -237,7 +237,6 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                   <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input
-                      className={inputClasses}
                       type="Number"
                       id="advance"
                       name="advance"
@@ -253,7 +252,7 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                   <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <select
-                      className="form-select block w-full mt-1"
+                      className="form-select w-full mt-1"
                       id="paymentMode"
                       name="paymentMode"
                       value={form.paymentMode}
@@ -267,12 +266,12 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-4`}>
+                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-3`}>
                     <label htmlFor="singleTermPayment">
                       Single Term Amount
                     </label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle} py-4`}>
+                  <td className={`${tableCellStyle} ${tableDataStyle} py-3`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -284,10 +283,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-4`}>
+                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-3`}>
                     <label htmlFor="firstPayment">First Payment</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle} py-4`}>
+                  <td className={`${tableCellStyle} ${tableDataStyle} py-3`}>
                     <input
                       readOnly="true"
                       type="text"

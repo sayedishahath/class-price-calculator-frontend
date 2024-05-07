@@ -75,18 +75,21 @@ const handleSubmit= async(e)=>{
 //     html2pdf().from(element).set(opt).save();
 //   };
     return(
-        <div className='formContent flex justify-center'>
+        <div className='formContent md:w-1/2 lg:h-screen'>
             <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-5 grid-rows-2 gap-2">
-                        <div className="row-span-2 col-start-2" >
+                    <div className="flex flex-row gap-2">
+                        <div className="" >
                             <SchoolTable form={form} setForm={setForm}/>
                         </div>
-                        <div className="col-span-3 col-start-3 mr-20">
-                            <ClassTable form={form} setForm={setForm}/>
+                        <div className="">
+                            <div>
+                                <DealDetailsTable form={form} setForm={setForm}/>
+                            </div>
+                            <div className="py-2">
+                                <ClassTable  form={form} setForm={setForm}/>
+                            </div>
                         </div>
-                        <div className="col-span-3 col-start-3 row-start-2">
-                            <DealDetailsTable form={form} setForm={setForm}/>
-                        </div>
+                        
                     </div>
             {/* <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/> */}
             </form>

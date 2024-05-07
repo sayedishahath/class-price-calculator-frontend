@@ -1,7 +1,7 @@
 import {useState} from  'react';
 export default function SchoolTable({form,setForm}){
     // const tableRowClasses = "border border-black p-2";
-    const tableCellStyle = "px-1 py-8 whitespace-nowrap text-sm";
+    const tableCellStyle = "px-1 py-7 whitespace-nowrap text-sm";
     const tableHeaderStyle = "font-medium text-zinc-900 text-left";
     const tableDataStyle = "text-zinc-500";;
     const inputClasses = "";
@@ -13,8 +13,8 @@ export default function SchoolTable({form,setForm}){
         setForm({...form, [name]: value })
     }
     return(
-    
-    <div className="">
+
+    <div className="flex justify-start">
         <table className="divide-y divide-zinc-200 border border-gray-300">
             <tbody className='divide-y divide-zinc-200' style={{backgroundColor:"#DCD6F7"}}>
                 <tr>
