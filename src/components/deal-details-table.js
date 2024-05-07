@@ -1,6 +1,8 @@
 import { useState,useEffect,useCallback } from "react";
 export default function DealDetailsTable({ form, setForm }) {
-  const tableCellStyle = "px-6 py-4 whitespace-nowrap text-sm";
+  const tableCellStyle = "px-2 py-3 whitespace-nowrap text-sm";
+  const firstTableCellStyle = "px-2 py-2 whitespace-nowrap text-sm";
+  
   const tableHeaderStyle = "font-medium text-zinc-900 text-left";
   const tableDataStyle = "text-zinc-500";
   const rowClass = "bg-green-200";
@@ -121,17 +123,17 @@ export default function DealDetailsTable({ form, setForm }) {
   return (
     
       // <div className="overflow-hidden bg-white shadow-md rounded-lg">
-        <div className="flex flex-col lg:flex-row justify-center gap-1">
+        <div className="flex flex-col lg:flex-row justify-left gap-1">
             <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-zinc-200 border border-gray-300">
               <tbody className="divide-y divide-zinc-200" style={{  backgroundColor:"#DCD6F7"}}>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="minPricePerStudent">
                       Min Price/Students
                     </label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -144,10 +146,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="includeGSTAmount">Including GST -18%</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -159,10 +161,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="minDealValue">Min Deal Value</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -174,10 +176,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="propsedDeal">Proposed Deal Value</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -189,10 +191,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} py-4 ${tableHeaderStyle}`}>
                     <label htmlFor="bufferValue">Buffer Value</label>
                   </td>
-                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-4 ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -204,12 +206,12 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} py-4 ${tableHeaderStyle}`}>
                     <label htmlFor="totalDiscountValue">
                       Total Deal Discount
                     </label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle} py-4 ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -265,12 +267,12 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-4`}>
                     <label htmlFor="singleTermPayment">
                       Single Term Amount
                     </label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${tableCellStyle} ${tableDataStyle} py-4`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -282,10 +284,10 @@ export default function DealDetailsTable({ form, setForm }) {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                  <td className={`${tableCellStyle} ${tableHeaderStyle} py-4`}>
                     <label htmlFor="firstPayment">First Payment</label>
                   </td>
-                  <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                  <td className={`${tableCellStyle} ${tableDataStyle} py-4`}>
                     <input
                       readOnly="true"
                       type="text"

@@ -42,7 +42,24 @@ const [form,setForm] = useState({
 
 const handleSubmit= async(e)=>{
     e.preventDefault()
-    window.print()
+    try{
+        const res = await axios.post("http://65.1.106.79:3007/bill", form)
+        alert('saved successfully')
+        // const capture = document.querySelector('.formContent')
+        // html2canvas(capture).then((canvas)=>{
+        //     const imgData = canvas.toDataURL('img/png')
+        //     const doc = new jsPDF('l','mm','a3')
+        //     const componentWidth = doc.internal.pageSize.getWidth()
+        //     const componentHeight = doc.internal.pageSize.getHeight()
+        //     doc.addImage(imgData,'PNG',0,0,componentWidth,componentHeight)
+        //     doc.save(`${form.schoolName}.pdf`)
+        // })
+        window.print()
+        console.log(res.data)
+    }catch(err){
+        alert(err.message)
+        console.log(err)
+    }
 }
 
 // const saveAsPDF = () => {
@@ -58,20 +75,19 @@ const handleSubmit= async(e)=>{
 //     html2pdf().from(element).set(opt).save();
 //   };
     return(
-        <div className='formContent'>
+        <div className='formContent flex justify-center'>
             <form onSubmit={handleSubmit}>
-                
-                    <div className="flex flex-col lg:flex-row justify-center gap-2 mb-2">
-                        <div className="overflow-x-auto" >
+                    <div className="grid grid-cols-5 grid-rows-2 gap-2">
+                        <div className="row-span-2 col-start-2" >
                             <SchoolTable form={form} setForm={setForm}/>
                         </div>
-                        <div className="overflow-x-auto">
+                        <div className="col-span-3 col-start-3 mr-20">
+                            <ClassTable form={form} setForm={setForm}/>
+                        </div>
+                        <div className="col-span-3 col-start-3 row-start-2">
                             <DealDetailsTable form={form} setForm={setForm}/>
                         </div>
                     </div>
-                
-                <ClassTable form={form} setForm={setForm}/>
-            
             {/* <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/> */}
             </form>
         </div>

@@ -1,10 +1,10 @@
 import {useState} from  'react';
 export default function SchoolTable({form,setForm}){
     // const tableRowClasses = "border border-black p-2";
-    const tableCellStyle = "px-6 py-4 whitespace-nowrap text-sm";
+    const tableCellStyle = "px-1 py-8 whitespace-nowrap text-sm";
     const tableHeaderStyle = "font-medium text-zinc-900 text-left";
     const tableDataStyle = "text-zinc-500";;
-    const inputClasses = "w-full p-2 bg-white";
+    const inputClasses = "";
    
 
 
@@ -14,9 +14,9 @@ export default function SchoolTable({form,setForm}){
     }
     return(
     
-    <div>
-        <table className="min-w-full divide-y divide-zinc-200 border border-gray-300">
-            <tbody className=' divide-y divide-zinc-200' style={{backgroundColor:"#DCD6F7"}}>
+    <div className="">
+        <table className="divide-y divide-zinc-200 border border-gray-300">
+            <tbody className='divide-y divide-zinc-200' style={{backgroundColor:"#DCD6F7"}}>
                 <tr>
                     <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
                         <label htmlFor='schoolName'>School Name</label>
@@ -108,10 +108,10 @@ export default function SchoolTable({form,setForm}){
                     </td>
                 </tr>
                 <tr>
-                    <td className={`${tableCellStyle} ${tableHeaderStyle}`}>
+                    <td className={`${tableCellStyle}  ${tableHeaderStyle}`}>
                         <label htmlFor='extraPaymentOffer'>Extra Payment Offer</label>
                     </td>
-                    <td className={`${tableCellStyle} ${tableDataStyle}`}>
+                    <td className={`${tableCellStyle}  ${tableDataStyle}`}>
                         <input 
                         type="text" 
                         id="extraPaymentOffer"

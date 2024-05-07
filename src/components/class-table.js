@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 export default function ClassTable({form,setForm}){
-    const tableClass = "mx-auto border border-collapse border-gray-300 text-sm text-left text-zinc-500";
-    const cellClass = "py-4 px-6";
+    const tableClass = "border border-collapse border-gray-300 text-sm text-center";
+    const cellClass = "py-1 px-1";
     const yellowBgClass = {backgroundColor:"#A6B1E1"}
     const whiteBgClass = "bg-white-200"
     const borderClass = "border-b";
@@ -129,9 +129,9 @@ export default function ClassTable({form,setForm}){
         setForm({ ...form , [name]:value })
       }
     return (
-        <div className="overflow-x-auto">
+        <div className="">
             <table className={tableClass}>
-                <thead className="text-xs  uppercase " style={{ backgroundColor: '#424874' ,color:"#F4EEFF"} }>
+                <thead className="text-xs uppercase " style={{ backgroundColor: '#424874' ,color:"#F4EEFF"} }>
                     <tr>
                         <th scope="col" className={cellClass}>Class</th>
                         <th scope="col" className={cellClass}>MRP</th>
@@ -148,29 +148,29 @@ export default function ClassTable({form,setForm}){
                 {form.classes.map((ele, index) => {
                     return (
                         <tr key={index} className={`bg-white ${borderClass} ${darkBgClass} ${darkBorderClass}`}>
-                            <td className={` ${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="true" type="Number" id='class' name='class' value={ele.class} onChange={(e) => {handleChange(e, index)}} />
+                            <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
+                                <input className="w-1/2 text-center" readOnly="true" type="Number" id='class' name='class' value={ele.class} onChange={(e) => {handleChange(e, index)}} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="true" type="Number" id='MRP' name='MRP' value={ele.MRP} onChange={(e) => handleChange(e, index)} />
+                                <input className="w-1/2 text-center" readOnly="true" type="Number" id='MRP' name='MRP' value={ele.MRP} onChange={(e) => handleChange(e, index)} />
                             </td>
-                            <td className={`${whiteBgClass} ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
+                            <td className={`${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
+                                <input className="w-1/2 text-center"  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
+                                <input className="w-1/2 text-center" readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`}style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
+                                <input className="w-1/2 text-center" readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
                             </td>
-                            <td className={`${whiteBgClass} ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
-                            </td>
-                            <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
+                            <td className={` ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
+                                <input className="w-1/2 text-center" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input readOnly="true" type="Number" id='discount' name='discount' value={ele.discount} onChange={(e) => handleChange(e, index)} />
+                                <input className="w-1/2 text-center" readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
+                            </td>
+                            <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
+                                <input className="w-1/2 text-center" readOnly="true" type="Number" id='discount' name='discount' value={ele.discount} onChange={(e) => handleChange(e, index)} />
                             </td>
                         </tr>
                     );
@@ -180,16 +180,22 @@ export default function ClassTable({form,setForm}){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input type="text" id ="totalStudents" name="totalStudents" value={calculateStudentsTotal()} onChange={handleChangeTotal} />
+                            <input className="w-1/2 text-center" type="text" id ="totalStudents" name="totalStudents" value={calculateStudentsTotal()} onChange={handleChangeTotal} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calculateMRPPerClassTotal()} onChange={handleChangeTotal}/>
+                            <input className="w-1/2 text-center" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calculateMRPPerClassTotal()} onChange={handleChangeTotal}/>
                         </td>
-                        <td className={`${yellowBgClass} ${cellClass}`} colSpan={2}>
-                            <input type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calculateTotalMinCostPerClass()} onChange={handleChangeTotal}/>
+                        <td className={`${yellowBgClass} ${cellClass}`}>
+                            <input className="w-1/2 text-center" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calculateTotalMinCostPerClass()} onChange={handleChangeTotal} />
+                        </td>
+                        <td className={`${yellowBgClass} ${cellClass}`}>
+            
                         </td>
                         <td className={`${form.totalQuatedCostPerClass < form.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calculateTotalQuatedCostPerClasss()} onChange={handleChangeTotal}/>
+                            <input className="w-1/2 text-center" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calculateTotalQuatedCostPerClasss()} onChange={handleChangeTotal}/>
+                        </td>
+                        <td className={`${yellowBgClass} ${cellClass}`}>
+            
                         </td>
                     </tr>
                 </tbody>
