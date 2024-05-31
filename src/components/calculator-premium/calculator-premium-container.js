@@ -5,7 +5,7 @@ import jsPDF from 'jspdf'
 import SchoolTable from "./school-table"
 import ClassTable from "./class-table"
 import DealDetailsTable from "./deal-details-table"
-export default function Calculator(){
+export default function CalculatorPremium(){
 
 const [form,setForm] = useState({
     schoolName:"",
@@ -76,6 +76,7 @@ const handleSubmit= async(e)=>{
 //   };
     return(
         <div className='formContent md:w-1/2 lg:h-screen'>
+            <h1>Premium</h1>
             <form onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-2">
                         <div className="" >
