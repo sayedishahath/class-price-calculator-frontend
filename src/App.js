@@ -3,20 +3,32 @@ import './App.css';
 import CalculatorNormal from './components/calculator-normal/calculator-normal-container';
 import CalculatorPremium from './components/calculator-premium/calculator-premium-container';
 import CalculatorMain from './components/calculator-main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
 function App() {
+  const location = useLocation();
+  let calculatorType = '';
+
+  if (location.pathname === '/normal-calculator') {
+    calculatorType = '- Standard';
+  } else if (location.pathname === '/premium-calculator') {
+    calculatorType = '- Premium';
+  }
+
   return (
     <div className="App container">
       <div className='flex gap-3 items-center justify-start flex-row mb-6 mt-3'>
-      <img src='./edize-logo.jpg' className=' w-23 h-10' alt='logo'></img> 
-      <h1 className='text-3xl font-bold' style={{ fontSize: '1.5rem' }}>Class Price Calculator</h1>
+        <img src='./edize-logo.jpg' className=' w-23 h-10' alt='logo'></img> 
+        <h1 className='text-3xl font-bold' style={{ fontSize: '1.5rem' }}>
+          Class Price Calculator {calculatorType}
+        </h1>
       </div>
-    <Routes>
-      <Route path='/' element={<CalculatorMain/>}/>
-      <Route path="/normal-calculator" element={<CalculatorNormal/>}/>
-      <Route path="/premium-calculator" element={<CalculatorPremium/>}/>
-    </Routes>
-  </div>
+      <Routes>
+        <Route path='/' element={<CalculatorMain/>}/>
+        <Route path="/normal-calculator" element={<CalculatorNormal/>}/>
+        <Route path="/premium-calculator" element={<CalculatorPremium/>}/>
+      </Routes>
+    </div>
   )
 }
 
