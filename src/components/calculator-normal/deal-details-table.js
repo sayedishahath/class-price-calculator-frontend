@@ -1,8 +1,11 @@
 import { useState,useEffect,useCallback } from "react";
-export default function DealDetailsTable({ form, setForm }) {
+import {useSelector,useDispatch} from 'react-redux'
+import { calculateMinCostPerClass,addDealDetails,calculateMinPricePerStudent,calculateincludeGSTAmount,
+        calculateminDealValue,calculateBufferValue,calculateProposedDealValue,
+        calculateTotalDiscountValue,calculateSingleTermPayment,calculateFirstPayment} from "../../actions/calculatorAction";
+export default function DealDetailsTable() {
   const tableCellStyle = "px-2 py-3 whitespace-nowrap text-sm";
   const firstTableCellStyle = "px-2 py-2 whitespace-nowrap text-sm";
-  
   const tableHeaderStyle = "font-medium text-zinc-900 text-left";
   const tableDataStyle = "text-zinc-500";
   const rowClass = "bg-green-200";
@@ -33,91 +36,124 @@ export default function DealDetailsTable({ form, setForm }) {
 //     }
 //     return result;
 // }
-
+  const dispatch = useDispatch();
+  const calcs = useSelector((state)=>{
+    return state.calculations
+  })
   
-  useEffect(() => {
-    const result =
-      (((form.stations * 500000 + form.mentors * 200000 + 53500) /
-        form.totalStudents +
-        3000) *
-        1.1 -
-      form.investementAmount / form.totalStudents).toFixed(2)
-      setForm({...form, minPricePerStudent:result})
-  }, [form]);
+  // useEffect(() => {
+  //   const result =
+  //     (((calcs.stations * 500000 + form.mentors * 200000 + 53500) /
+  //       form.totalStudents +
+  //       3000) *
+  //       1.1 -
+  //     form.investementAmount / form.totalStudents).toFixed(2)
+  //     setForm({...form, minPricePerStudent:result})
+  // }, [form]);
 
 
  
   
 
-  const calculateincludeGSTAmount = () => {
-    const result = (form.minPricePerStudent * 1.18).toFixed(2)
-    form.includeGSTAmount = result;
-    // console.log("gst", form.includeGSTAmount);
-    if(isNaN(result)){
-        return "0"
-    }
-    return result;
-  };
+  // const calculateincludeGSTAmount = () => {
+  //   const result = (form.minPricePerStudent * 1.18).toFixed(2)
+  //   form.includeGSTAmount = result;
+  //   // console.log("gst", form.includeGSTAmount);
+  //   if(isNaN(result)){
+  //       return "0"
+  //   }
+  //   return result;
+  // };
 
-  const calculateminDealValue = () => {
-    const result = (form.includeGSTAmount * form.totalStudents).toFixed(2)
-    form.minDealValue = result;
-    // console.log(form.minDealValue);
-    if(isNaN(result)){
-        return "0"
-    }
-    return result;
-  };
+  // const calculateminDealValue = () => {
+  //   const result = (form.includeGSTAmount * form.totalStudents).toFixed(2)
+  //   form.minDealValue = result;
+  //   // console.log(form.minDealValue);
+  //   if(isNaN(result)){
+  //       return "0"
+  //   }
+  //   return result;
+  // };
 
-  const calculateBufferValue = () => {
-    const result =
-      form.totalQuatedCostPerClass -
-      form.totalMinCostPerClass -
-      form.extraPaymentOffer;
-    form.bufferValue = result;
-    return result;
-  };
+  // const calculateBufferValue = () => {
+  //   const result =
+  //     form.totalQuatedCostPerClass -
+  //     form.totalMinCostPerClass -
+  //     form.extraPaymentOffer;
+  //   form.bufferValue = result;
+  //   return result;
+  // };
 
-  const calculateProposedDealValue = () => {
-    const result = form.totalQuatedCostPerClass;
-    form.propsedDeal = result;
-    return result;
-  };
+  // const calculateProposedDealValue = () => {
+  //   const result = form.totalQuatedCostPerClass;
+  //   form.propsedDeal = result;
+  //   return result;
+  // };
 
-  const calculateTotalDiscountValue = () => {
-    const result =
-     ( ((form.totalMRPperClass - form.totalQuatedCostPerClass) /
-        form.totalMRPperClass) *
-      100).toFixed(2)
-    form.totalDiscountValue = result;
-    if(isNaN(result)){
-        return "0"
-    }
-    return result;
-  };
+  // const calculateTotalDiscountValue = () => {
+  //   const result =
+  //    ( ((form.totalMRPperClass - form.totalQuatedCostPerClass) /
+  //       form.totalMRPperClass) *
+  //     100).toFixed(2)
+  //   form.totalDiscountValue = result;
+  //   if(isNaN(result)){
+  //       return "0"
+  //   }
+  //   return result;
+  // };
 
-  const calculateSingleTermPayment = () => {
-    const result = (form.propsedDeal / form.paymentMode).toFixed(2)
-    form.singleTermPayment = result;
-    // console.log("prop", form.propsedDeal, "payment mode", form.paymentMode);
-    if(isNaN(result)||(result=='Infinity')){
-        return "0"
-    }
-    return result;
-  };
+  // const calculateSingleTermPayment = () => {
+  //   const result = (form.propsedDeal / form.paymentMode).toFixed(2)
+  //   form.singleTermPayment = result;
+  //   // console.log("prop", form.propsedDeal, "payment mode", form.paymentMode);
+  //   if(isNaN(result)||(result=='Infinity')){
+  //       return "0"
+  //   }
+  //   return result;
+  // };
 
-  const calculateFirstPayment = () => {
-    const result = (form.singleTermPayment - form.advance).toFixed(2)
-    form.firstPayment = result;
-    if(isNaN(result)||(result=='Infinity')){
-        return "0"
-    }
-    return result;
-  };
+  // const calculateFirstPayment = () => {
+  //   const result = (form.singleTermPayment - form.advance).toFixed(2)
+  //   form.firstPayment = result;
+  //   if(isNaN(result)||(result=='Infinity')){
+  //       return "0"
+  //   }
+  //   return result;
+  // };
 
+  // useEffect(() => {
+  //     let minPricePerStudent =
+  //       (((calcs.stations * 500000 + calcs.mentors * 200000 + 53500) /
+  //         calcs.totalStudents +
+  //         3000) *
+  //         1.1 -
+  //       calcs.investmentAmount / calcs.totalStudents).toFixed(2);
+  //     dispatch(calculateMinPricePerStudent(minPricePerStudent));
+  // }, [calcs.stations, calcs.mentors, calcs.classes, calcs.investmentAmount, dispatch]);
+
+
+  useEffect(()=>{
+    console.log('dispatching actions...')
+    dispatch(calculateMinPricePerStudent())
+    dispatch(calculateincludeGSTAmount())
+    dispatch(calculateminDealValue())
+    dispatch(calculateBufferValue())
+    dispatch(calculateProposedDealValue())
+    dispatch(calculateTotalDiscountValue())
+    dispatch(calculateSingleTermPayment())
+    dispatch(calculateFirstPayment())
+},[calcs.totalMinCostPerClass,calcs.stations, calcs.mentors, calcs.totalStudents, calcs.investementAmount,calcs.totalQuatedCostPerClass,calcs.propsedDeal,calcs.paymentMode,calcs.advance, dispatch])
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    dispatch(addDealDetails({name,value}))
+    // dispatch(calculateMinPricePerStudent({name,value}))
+    // dispatch(calculateincludeGSTAmount({name,value}))
+    // dispatch(calculateminDealValue({name,value}))
+    // dispatch(calculateBufferValue({name,value}))
+    // dispatch(calculateProposedDealValue({name,value}))
+    // dispatch(calculateTotalDiscountValue({name,value}))
+    // dispatch(calculateSingleTermPayment({name,value}))
+    // dispatch(calculateFirstPayment({name,value}))
   };
 
   return (
@@ -139,10 +175,9 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="minPricePerStudent"
                       name="minPricePerStudent"
-                      value={isNaN(form.minPricePerStudent)?0:form.minPricePerStudent}
+                      value={isNaN(calcs.minPricePerStudent)?0:calcs.minPricePerStudent}
                       onChange={handleChange}
                     />
-                    {/* // /form.totalStudents)+3000)*110)-(form.investementAmount/form.totalStudents) */}
                   </td>
                 </tr>
                 <tr>
@@ -155,7 +190,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="includeGSTAmount"
                       name="includeGSTAmount"
-                      value={calculateincludeGSTAmount()}
+                      value={isNaN(calcs.includeGSTAmount)?0:calcs.includeGSTAmount}
                       onChange={handleChange}
                     />
                   </td>
@@ -170,7 +205,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="minDealValue"
                       name="minDealValue"
-                      value={calculateminDealValue()}
+                      value={isNaN(calcs.minDealValue)?0:calcs.minDealValue}
                       onChange={handleChange}
                     />
                   </td>
@@ -185,7 +220,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="propsedDeal"
                       name="propsedDeal"
-                      value={calculateProposedDealValue()}
+                      value={calcs.propsedDeal}
                       onChange={handleChange}
                     />
                   </td>
@@ -194,13 +229,13 @@ export default function DealDetailsTable({ form, setForm }) {
                   <td className={`${firstTableCellStyle} py-3 ${tableHeaderStyle}`}>
                     <label htmlFor="bufferValue">Buffer Value</label>
                   </td>
-                  <td className={`${form.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-3 ${tableDataStyle}`}>
+                  <td className={`${calcs.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-3 ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
                       id="bufferValue"
                       name="bufferValue"
-                      value={calculateBufferValue()}
+                      value={isNaN(calcs.bufferValue)?0:calcs.bufferValue}
                       onChange={handleChange}
                     />
                   </td>
@@ -217,7 +252,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="totalDiscountValue"
                       name="totalDiscountValue"
-                      value={calculateTotalDiscountValue()}
+                      value={isNaN(calcs.totalDiscountValue)?0:calcs.totalDiscountValue}
                       onChange={handleChange}
                     />
                   </td>
@@ -241,7 +276,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       id="advance"
                       name="advance"
                       placeholder="Enter Advance Amount"
-                      value={form.advance}
+                      value={calcs.advance}
                       onChange={handleChange}
                     />
                   </td>
@@ -255,7 +290,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       className="form-select w-full mt-1"
                       id="paymentMode"
                       name="paymentMode"
-                      value={form.paymentMode}
+                      value={calcs.paymentMode}
                       onChange={handleChange}
                     >
                       <option value="">select term</option>
@@ -277,7 +312,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="singleTermPayment"
                       name="singleTermPayment"
-                      value={calculateSingleTermPayment()}
+                      value={isNaN(calcs.singleTermPayment)?0:calcs.singleTermPayment}
                       onChange={handleChange}
                     />
                   </td>
@@ -292,7 +327,7 @@ export default function DealDetailsTable({ form, setForm }) {
                       type="text"
                       id="firstPayment"
                       name="firstPayment"
-                      value={calculateFirstPayment()}
+                      value={isNaN(calcs.firstPayment)?0:calcs.firstPayment}
                       onChange={handleChange}
                     />
                   </td>
@@ -301,6 +336,5 @@ export default function DealDetailsTable({ form, setForm }) {
             </table>
            </div>
         </div>
-      // {/* </div> */}
   );
 }

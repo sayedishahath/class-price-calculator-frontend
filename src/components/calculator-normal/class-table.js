@@ -1,5 +1,9 @@
 import { useState,useEffect } from "react";
-export default function ClassTable({form,setForm}){
+import { useSelector,useDispatch } from "react-redux";
+import { updateTotal,addStudents, updateTotalStudents, 
+        updateTotalMRPPerClass, updateTotalMinCostPerClass, updateTotalQuatedCostPerClass,calculateMRPPerClass,
+        calculateQuotedPricePerClass, calculateMinCostPerClass,calculateDiscount } from "../../actions/calculatorAction";
+export default function ClassTable(){
     const tableClass = "border border-collapse border-gray-300 text-sm mr-20";
     const cellClass = "py-1 px-1 w-[50px]";
     const yellowBgClass = {backgroundColor:"#A6B1E1"}
@@ -8,69 +12,113 @@ export default function ClassTable({form,setForm}){
     const darkBgClass = "dark:bg-zinc-800";
     const darkBorderClass = "dark:border-zinc-700";
     const narrwoCell = "width-100px"
-    const calculateStudentsTotal = () => {
-        const totalStudents = form.classes.reduce((acc, cv) => {
-            return parseInt(acc) + parseInt(cv.students);
-        }, 0)
+
+    const dispatch = useDispatch()
+    const calcs = useSelector((state)=>{
+        return state.calculations
+    })
+    // const calculateStudentsTotal = () => {
+    //     const totalStudents = calcs.classes.reduce((acc, cv) => {
+    //         return parseInt(acc) + parseInt(cv.students);
+    //     }, 0)
+    //     if (isNaN(totalStudents)) {
+    //         return "-"
+    //     } else {
+    //         // console.log(totalStudents);
+    //         calcs.totalStudents=totalStudents;
+    //         return totalStudents
+    //     }
+    // }
+
+    // const calculateMRPPerClassTotal = () => {
+    //     const MRPperClassTotal = calcs.classes.reduce((acc, cv) => {
+    //         return parseInt(acc) + parseInt(cv.MRPperClass);
+    //     }, 0)
+    //     if (isNaN(MRPperClassTotal)) {
+    //         return "-"
+    //     } else {
+    //         calcs.totalMRPperClass=MRPperClassTotal;
+    //         return MRPperClassTotal
+    //     }
+    // }
+    // const calculateTotalMinCostPerClass = () => {
+    //     const totalMinCostPerClass = calcs.classes.reduce((acc, cv) => {
+    //         return parseInt(acc) + parseInt(cv.minCostPerClass);
+    //     }, 0)
+    //     if (isNaN(totalMinCostPerClass)) {
+    //         return "-"
+    //     } else {
+    //         calcs.totalMinCostPerClass=totalMinCostPerClass
+    //         return totalMinCostPerClass
+    //     }
+    // }
+
+    // const calculateTotalQuatedCostPerClasss = () => {
+    //     const totalQuatedCostPerClass = calcs.classes.reduce((acc, cv) => {
+    //         return parseInt(acc) + parseInt(cv.quatedCostPerClass);
+    //     }, 0)
+    //     if (isNaN(totalQuatedCostPerClass)) {
+    //         return "-"
+    //     } else {
+    //         calcs.totalQuatedCostPerClass=totalQuatedCostPerClass;
+    //         return totalQuatedCostPerClass
+    //     }
+    // }
+
+    useEffect(() => {
+        let totalStudents = calcs.classes.reduce((acc, cv) => parseInt(acc) + parseInt(cv.students), 0);
         if (isNaN(totalStudents)) {
-            return "-"
+            totalStudents ='-'
         } else {
-            // console.log(totalStudents);
-            form.totalStudents=totalStudents;
-            return totalStudents
+            totalStudents=totalStudents;
         }
-    }
-
-    const calculateMRPPerClassTotal = () => {
-        const MRPperClassTotal = form.classes.reduce((acc, cv) => {
-            return parseInt(acc) + parseInt(cv.MRPperClass);
-        }, 0)
-        if (isNaN(MRPperClassTotal)) {
-            return "-"
-        } else {
-            form.totalMRPperClass=MRPperClassTotal;
-            return MRPperClassTotal
-        }
-    }
-    const calculateTotalMinCostPerClass = () => {
-        const totalMinCostPerClass = form.classes.reduce((acc, cv) => {
-            return parseInt(acc) + parseInt(cv.minCostPerClass);
-        }, 0)
-        if (isNaN(totalMinCostPerClass)) {
-            return "-"
-        } else {
-            form.totalMinCostPerClass=totalMinCostPerClass
-            return totalMinCostPerClass
-        }
-    }
-
-    const calculateTotalQuatedCostPerClasss = () => {
-        const totalQuatedCostPerClass = form.classes.reduce((acc, cv) => {
-            return parseInt(acc) + parseInt(cv.quatedCostPerClass);
-        }, 0)
-        if (isNaN(totalQuatedCostPerClass)) {
-            return "-"
-        } else {
-            form.totalQuatedCostPerClass=totalQuatedCostPerClass;
-            return totalQuatedCostPerClass
-        }
-    }
+        dispatch(updateTotalStudents(totalStudents));
     
-    const calculateMRPPerClass = (classData) => {
-        return classData.MRP * classData.students;
-    }
+        let totalMRPperClass = calcs.classes.reduce((acc, cv) => acc + cv.MRPperClass, 0);
+        if (isNaN(totalMRPperClass)) {
+            totalMRPperClass ='-'
+        } else {
+            totalMRPperClass=totalMRPperClass;
+        }
+        dispatch(updateTotalMRPPerClass(totalMRPperClass));
+    
+        let totalMinCostPerClass = calcs.classes.reduce((acc, cv) => acc + cv.minCostPerClass, 0);
+        if (isNaN(totalMinCostPerClass)) {
+            totalMinCostPerClass ='-'
+        } else {
+            totalMinCostPerClass=totalMinCostPerClass;
+        }
+        dispatch(updateTotalMinCostPerClass(totalMinCostPerClass));
+    
+        let totalQuatedCostPerClass = calcs.classes.reduce((acc, cv) => acc + cv.quatedCostPerClass, 0);
+        if (isNaN(totalQuatedCostPerClass)) {
+            totalQuatedCostPerClass ='-'
+        } else {
+            totalQuatedCostPerClass=totalQuatedCostPerClass;
+        }
+        dispatch(updateTotalQuatedCostPerClass(totalQuatedCostPerClass));
+      }, [calcs.classes]);
 
-    const calculateQuotedPricePerClass = (classData)=>{
-        return classData.propsalPricePerStudent*classData.students;
-    }
+    // const totalStudentsValue = calcs.totalStudents;
+    // const totalMRPperClassValue = calcs.totalMRPperClass;
+    // const totalMinCostPerClassValue = calcs.totalMinCostPerClass;
+    // const totalQuatedCostPerClassValue = calcs.totalQuatedCostPerClass;
+    
+    // const calculateMRPPerClass = (classData) => {
+    //     return classData.MRP * classData.students;
+    // }
 
-    const calculateMinCostPerClass = (classData)=>{
-        return form.includeGSTAmount*classData.students
-    }
+    // const calculateQuotedPricePerClass = (classData)=>{
+    //     return classData.propsalPricePerStudent*classData.students;
+    // }
 
-    const calculateDiscount = (classData)=>{
-        return (((classData.MRP-classData.propsalPricePerStudent)/(classData.MRP))*100).toFixed(2)
-    }
+    // const calculateMinCostPerClass = (classData)=>{
+    //     return form.includeGSTAmount*classData.students
+    // }
+
+    // const calculateDiscount = (classData)=>{
+    //     return (((classData.MRP-classData.propsalPricePerStudent)/(classData.MRP))*100).toFixed(2)
+    // }
 
     // const handleChange = (e, rowIndex) => {
     //     const { name, value } = e.target;
@@ -98,35 +146,60 @@ export default function ClassTable({form,setForm}){
         
     //   };
 
+     
+    
+    // const handleChangeMinCostPerClass =(e,rowIndex)=>{
+    //     const { name, value } = e.target;
+    //     dispatch(calculateMinCostPerClass({ rowIndex, name, value }))
+    // }
+    useEffect(() => {
+        const updateMinCostPerClass = () => {
+          calcs.classes.forEach((classData, index) => {
+            const newMinCostPerClass = calculateMinCostPerClass(classData, calcs.includeGSTAmount);
+            dispatch(calculateMinCostPerClass({ rowIndex: index, minCostPerClass: newMinCostPerClass }));
+          });
+        };
+      
+        updateMinCostPerClass();
+      }, [calcs.includeGSTAmount]);
     const handleChange = (e, rowIndex) => {
         const { name, value } = e.target;
-        const newClasses = [...form.classes];
-        newClasses[rowIndex] = {...newClasses[rowIndex], [name]: value };
-        setForm({...form, classes: newClasses });
+        dispatch (addStudents({ rowIndex, name, value }));
+        dispatch (calculateMRPPerClass({ rowIndex, name, value }))
+        dispatch (calculateQuotedPricePerClass({ rowIndex, name, value }))
+        // dispatch (calculateMinCostPerClass({ rowIndex, name, value }))
+        // if (name === 'includeGSTAmount') {
+        //     const newMinCostPerClass = calcs.includeGSTAmount * calcs.classes[rowIndex].students;
+        //     dispatch(calculateMinCostPerClass({ rowIndex, minCostPerClass: newMinCostPerClass }));
+        // } else {
+        //     dispatch(calculateMinCostPerClass({ rowIndex, name, value }));
+        // }
         
+        // dispatch (calculateMinCostPerClass({ rowIndex, name, value }))
+        dispatch (calculateDiscount({ rowIndex, name, value }))
         
         // Calculate MRP per class for the updated class
-        const MRPperClass = calculateMRPPerClass(newClasses[rowIndex]);
-        newClasses[rowIndex] = {...newClasses[rowIndex], MRPperClass };
+        // const MRPperClass = calculateMRPPerClass(newClasses[rowIndex]);
+        // newClasses[rowIndex] = {...newClasses[rowIndex], MRPperClass };
     
-        // Calculate quoted cost per class for the updated class
-        const quatedCostPerClass = calculateQuotedPricePerClass(newClasses[rowIndex]);
-        newClasses[rowIndex] = {...newClasses[rowIndex], quatedCostPerClass };
+        // // Calculate quoted cost per class for the updated class
+        // const quatedCostPerClass = calculateQuotedPricePerClass(newClasses[rowIndex]);
+        // newClasses[rowIndex] = {...newClasses[rowIndex], quatedCostPerClass };
     
-        // Calculate min cost per class for the updated class
-        const minCostPerClass = calculateMinCostPerClass(newClasses[rowIndex]);
-        newClasses[rowIndex] = {...newClasses[rowIndex], minCostPerClass };
+        // // Calculate min cost per class for the updated class
+        // const minCostPerClass = calculateMinCostPerClass(newClasses[rowIndex]);
+        // newClasses[rowIndex] = {...newClasses[rowIndex], minCostPerClass };
     
-        // Calculate discount for the updated class
-        const discount = calculateDiscount(newClasses[rowIndex]);
-        newClasses[rowIndex] = {...newClasses[rowIndex], discount };
+        // // Calculate discount for the updated class
+        // const discount = calculateDiscount(newClasses[rowIndex]);
+        // newClasses[rowIndex] = {...newClasses[rowIndex], discount };
     
-        setForm({...form, classes: newClasses });
+        // setForm({...calcs, classes: newClasses });
     };
     
       const handleChangeTotal = (e)=>{
-        const { name, value } = e.target
-        setForm({ ...form , [name]:value })
+        // const { name, value } = e.target
+        // dispatch(updateTotal({name,value}))
       }
     return (
         <div className="">
@@ -145,7 +218,7 @@ export default function ClassTable({form,setForm}){
                 </thead>
                 <tbody>
                 
-                {form.classes.map((ele, index) => {
+                {calcs.classes.map((ele, index) => {
                     return (
                         <tr key={index} className={`bg-white ${borderClass} ${darkBgClass} ${darkBorderClass}`}>
                             <td className={`${cellClass} `} style={{backgroundColor:"#F4EEFF"}}>
@@ -180,19 +253,19 @@ export default function ClassTable({form,setForm}){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calculateStudentsTotal()} onChange={handleChangeTotal} />
+                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents} onChange />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calculateMRPPerClassTotal()} onChange={handleChangeTotal}/>
+                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} onChange/>
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calculateTotalMinCostPerClass()} onChange={handleChangeTotal} />
+                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass} onChange />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
-                        <td className={`${form.totalQuatedCostPerClass < form.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calculateTotalQuatedCostPerClasss()} onChange={handleChangeTotal}/>
+                        <td className={`${calcs.totalQuatedCostPerClass < calcs.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
+                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} onChange/>
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

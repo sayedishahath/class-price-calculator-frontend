@@ -1,16 +1,20 @@
 import {useState} from  'react';
-export default function SchoolTable({form,setForm}){
+import { useDispatch, useSelector } from 'react-redux';
+import { addSchoolDetails } from '../../actions/calculatorAction';
+export default function SchoolTable(){
     // const tableRowClasses = "border border-black p-2";
     const tableCellStyle = "px-1 py-7 whitespace-nowrap text-sm";
     const tableHeaderStyle = "font-medium text-zinc-900 text-left";
     const tableDataStyle = "text-zinc-500";;
     const inputClasses = "";
    
-
-
+    const dispatch = useDispatch()
+    const calcs = useSelector((state)=>{
+        return state.calculations
+    })
     const handleChange = (e) => {
         const {name, value} = e.target
-        setForm({...form, [name]: value })
+        dispatch(addSchoolDetails({name,value}))
     }
     return(
 
@@ -28,7 +32,7 @@ export default function SchoolTable({form,setForm}){
                         type="text" 
                         className={inputClasses} 
                         placeholder='Enter the school name'
-                        value={form.schoolName}
+                        value={calcs.schoolName}
                         onChange={handleChange}/>
                     </td>
                 </tr>
@@ -43,7 +47,7 @@ export default function SchoolTable({form,setForm}){
                         name="investementAmount"
                         className={inputClasses}
                         placeholder='Enter investment amount'
-                        value={form.investementAmount}
+                        value={calcs.investementAmount}
                         onChange={handleChange} />
                     </td>
                 </tr>
@@ -58,7 +62,7 @@ export default function SchoolTable({form,setForm}){
                         name="classesForSignup"
                         className={inputClasses}
                         placeholder="Number of classes for sign up."
-                        value={form.classesForSignup}
+                        value={calcs.classesForSignup}
                         onChange={handleChange} />
                     </td>
                 </tr>
@@ -73,7 +77,7 @@ export default function SchoolTable({form,setForm}){
                         name="mentors"
                         className={inputClasses} 
                         placeholder='Enter number of mentors'
-                        value={form.mentors}
+                        value={calcs.mentors}
                         onChange={handleChange}/>
                     </td>
                 </tr>
@@ -88,7 +92,7 @@ export default function SchoolTable({form,setForm}){
                         name="stations"
                         className={inputClasses}
                         placeholder='Enter number of stations'
-                        value={form.stations}
+                        value={calcs.stations}
                         onChange={handleChange}/>
                     </td>
                 </tr>
@@ -103,7 +107,7 @@ export default function SchoolTable({form,setForm}){
                         name="BDE"
                         className={inputClasses}
                         placeholder='Enter BDE name'
-                        value={form.BDE}
+                        value={calcs.BDE}
                         onChange={handleChange} /> 
                     </td>
                 </tr>
@@ -118,7 +122,7 @@ export default function SchoolTable({form,setForm}){
                         name="extraPaymentOffer"
                         className={inputClasses}
                         placeholder='Extra payment offer'
-                        value={form.extraPaymentOffer}
+                        value={calcs.extraPaymentOffer}
                         onChange={handleChange} /> 
                     </td>
                 </tr>
