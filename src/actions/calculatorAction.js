@@ -129,3 +129,9 @@ export const updateTotalStudents = (totalStudents) => ({
     type: 'UPDATE_TOTAL_QUATED_COST_PER_CLASS',
     totalQuatedCostPerClass,
   });
+
+  export const resetState = ()=>{
+    return {
+        type:"RESET_STATE"
+    }
+  }

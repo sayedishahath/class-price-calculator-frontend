@@ -1,11 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { resetState } from './actions/calculatorAction';
 import CalculatorNormal from './components/calculator-normal/calculator-normal-container';
 import CalculatorPremium from './components/calculator-premium/calculator-premium-container';
 import CalculatorMain from './components/calculator-main';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch()
   const location = useLocation();
   let calculatorType = '';
 
@@ -15,6 +19,17 @@ function App() {
     calculatorType = '- Premium';
   }
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/normal-calculator') {
+      // Reset state when navigating to Normal Calculator
+      dispatch(resetState());
+    } else if (location.pathname === '/premium-calculator') {
+      // Reset state when navigating to Premium Calculator
+      dispatch(resetState());
+    }
+  }, [location, navigate, dispatch]);
   return (
     <div className="App container">
       <div className='flex gap-3 items-center justify-start flex-row mb-6 mt-3'>

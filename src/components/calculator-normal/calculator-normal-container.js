@@ -48,7 +48,8 @@ const calcs = useSelector((state)=>{
 const handleSubmit= async(e)=>{
     e.preventDefault()
     try{
-        const res = await axios.post("http://65.1.106.79:3007/bill", calcs)
+        calcs.calculatorType = 'standard'
+        const res = await axios.post("http://localhost:3007/bill", calcs)
         alert('saved successfully')
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
@@ -85,7 +86,7 @@ const handleSubmit= async(e)=>{
                         </div>
                         
                     </div>
-            {/* <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/> */}
+            <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
             </form>
         </div>
     )

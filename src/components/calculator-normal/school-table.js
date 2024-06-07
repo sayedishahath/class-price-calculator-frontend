@@ -27,6 +27,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                         <input 
+                        required
                         id="schoolName"
                         name="schoolName"
                         type="text" 
@@ -42,6 +43,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        required
                         type="number" 
                         id="investementAmount"
                         name="investementAmount"
@@ -57,6 +59,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        required
                         type="number" 
                         id="classesForSignup"
                         name="classesForSignup"
@@ -72,6 +75,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input
+                        required
                         type="number" 
                         id='mentors'
                         name="mentors"
@@ -87,6 +91,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        required
                         type="number" 
                         id="stations"
                         name="stations"
@@ -101,28 +106,14 @@ export default function SchoolTable(){
                         <label htmlFor='BDE'>BDE</label>
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
-                        <input 
+                        <input
+                        required 
                         type="text" 
                         id="BDE"
                         name="BDE"
                         className={inputClasses}
                         placeholder='Enter BDE name'
                         value={calcs.BDE}
-                        onChange={handleChange} /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td className={`${tableCellStyle}  ${tableHeaderStyle}`}>
-                        <label htmlFor='extraPaymentOffer'>Extra Payment Offer</label>
-                    </td>
-                    <td className={`${tableCellStyle}  ${tableDataStyle}`}>
-                        <input 
-                        type="text" 
-                        id="extraPaymentOffer"
-                        name="extraPaymentOffer"
-                        className={inputClasses}
-                        placeholder='Extra payment offer'
-                        value={calcs.extraPaymentOffer}
                         onChange={handleChange} /> 
                     </td>
                 </tr>

@@ -1,4 +1,5 @@
 const initialState = {
+    calculatorType:"",
     schoolName:"",
     investementAmount:0,
     classesForSignup:0,
@@ -164,7 +165,10 @@ export default function calculationReducer(state=initialState,action){
         case 'UPDATE_TOTAL_QUATED_COST_PER_CLASS':{
             return { ...state, totalQuatedCostPerClass: action.totalQuatedCostPerClass };
         }
-            
+        
+        case 'RESET_STATE':{
+            return initialState
+        }
         default:
           return state;
       }
