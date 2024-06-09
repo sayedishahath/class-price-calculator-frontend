@@ -38,7 +38,7 @@ function App() {
             handleLogin(response.data)
         }) ()
     }
-  }, [handleLogin])
+  }, [])
 
   useEffect(()=>{
     if(localStorage.getItem("token")&&user) {
