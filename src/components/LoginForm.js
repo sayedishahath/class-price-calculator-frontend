@@ -66,7 +66,7 @@ export default function LoginForm() {
 
         if(Object.keys(errors).length === 0) {
             try {
-                const response = await axios.post("http://localhost:3007/api/user/login", formData)
+                const response = await axios.post("http://3.27.30.107:3007/api/user/login", formData)
                 const token = response.data.token
                 const user = response.data.user
                 localStorage.setItem("token", token)

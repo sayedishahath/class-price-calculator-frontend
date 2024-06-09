@@ -236,7 +236,7 @@ export default function ClassTable(){
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='MRP' name='MRP' value={ele.MRP} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input className="text-left w-[75px]"  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
+                                <input className="text-left w-[75px]"  readOnly="true" type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
                                 <input className=" text-left w-[75px]" readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
@@ -245,7 +245,7 @@ export default function ClassTable(){
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={` ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input className="text-left w-[75px]" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
+                                <input className="text-left w-[75px]" readOnly="true" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
@@ -261,19 +261,19 @@ export default function ClassTable(){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={selectedBill&&selectedBill.totalStudents}  />
+                            <input className="text-left w-[75px]" readOnly="true" type="text" id ="totalStudents" name="totalStudents" value={selectedBill&&selectedBill.totalStudents}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={selectedBill&&selectedBill.totalMRPperClass} />
+                            <input className="text-left w-[75px]" readOnly="true" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={selectedBill&&selectedBill.totalMRPperClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={selectedBill&&selectedBill.totalMinCostPerClass}  />
+                            <input className="text-left w-[75px]" readOnly="true" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={selectedBill&&selectedBill.totalMinCostPerClass}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
                         <td className={`${selectedBill&&selectedBill.totalQuatedCostPerClass < selectedBill&&selectedBill.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={selectedBill&&selectedBill.totalQuatedCostPerClass} />
+                            <input className="text-left w-[75px]" readOnly="true" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={selectedBill&&selectedBill.totalQuatedCostPerClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

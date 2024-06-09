@@ -33,6 +33,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                         <input 
+                        readOnly="true"
                         required
                         id="schoolName"
                         name="schoolName"
@@ -49,6 +50,7 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        readOnly="true"
                         required
                         type="number" 
                         id="investementAmount"
@@ -66,6 +68,7 @@ export default function SchoolTable(){
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
                         required
+                        readOnly="true"
                         type="number" 
                         id="classesForSignup"
                         name="classesForSignup"
@@ -82,6 +85,7 @@ export default function SchoolTable(){
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input
                         required
+                        readOnly="true"
                         type="number" 
                         id='mentors'
                         name="mentors"
@@ -98,6 +102,7 @@ export default function SchoolTable(){
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
                         required
+                        readOnly="true"
                         type="number" 
                         id="stations"
                         name="stations"
@@ -114,6 +119,7 @@ export default function SchoolTable(){
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                         <input
                         required 
+                        readOnly="true"
                         type="text" 
                         id="BDE"
                         name="BDE"

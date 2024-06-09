@@ -33,6 +33,8 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                         <input 
+                        required
+                        readOnly="true"
                         id="schoolName"
                         name="schoolName"
                         type="text" 
@@ -48,6 +50,8 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        required
+                        readOnly="true"
                         type="number" 
                         id="investementAmount"
                         name="investementAmount"
@@ -62,7 +66,9 @@ export default function SchoolTable(){
                         <label htmlFor="classesForSignup">No of Classes for Sign up</label>
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
-                    <input 
+                    <input
+                        required
+                        readOnly="true" 
                         type="number" 
                         id="classesForSignup"
                         name="classesForSignup"
@@ -78,6 +84,8 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input
+                        required
+                        readOnly="true"
                         type="number" 
                         id='mentors'
                         name="mentors"
@@ -93,6 +101,8 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input 
+                        required
+                        readOnly="true"
                         type="number" 
                         id="stations"
                         name="stations"
@@ -108,27 +118,14 @@ export default function SchoolTable(){
                     </td>
                     <td className={`${tableCellStyle} ${tableDataStyle}`}>
                         <input 
+                        required
+                        readOnly="true"
                         type="text" 
                         id="BDE"
                         name="BDE"
                         className={inputClasses}
                         placeholder='Enter BDE name'
                         value={selectedBill&&selectedBill.BDE}
-                        onChange={handleChange} /> 
-                    </td>
-                </tr>
-                <tr>
-                    <td className={`${tableCellStyle}  ${tableHeaderStyle}`}>
-                        <label htmlFor='extraPaymentOffer'>Extra Payment Offer</label>
-                    </td>
-                    <td className={`${tableCellStyle}  ${tableDataStyle}`}>
-                        <input 
-                        type="text" 
-                        id="extraPaymentOffer"
-                        name="extraPaymentOffer"
-                        className={inputClasses}
-                        placeholder='Extra payment offer'
-                        value={selectedBill&&selectedBill.extraPaymentOffer}
                         onChange={handleChange} /> 
                     </td>
                 </tr>

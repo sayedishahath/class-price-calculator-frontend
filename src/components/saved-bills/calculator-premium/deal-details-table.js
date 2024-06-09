@@ -278,6 +278,7 @@ export default function DealDetailsTable() {
                   </td>
                   <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <input
+                      readOnly="true"
                       type="Number"
                       id="advance"
                       name="advance"
@@ -293,6 +294,7 @@ export default function DealDetailsTable() {
                   </td>
                   <td className={`${tableCellStyle} ${tableDataStyle}`}>
                     <select
+                      readOnly="true"
                       className="form-select w-full mt-1"
                       id="paymentMode"
                       name="paymentMode"
