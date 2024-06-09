@@ -111,21 +111,6 @@ export default function SchoolTable(){
                         onChange={handleChange} /> 
                     </td>
                 </tr>
-                <tr>
-                    <td className={`${tableCellStyle}  ${tableHeaderStyle}`}>
-                        <label htmlFor='extraPaymentOffer'>Extra Payment Offer</label>
-                    </td>
-                    <td className={`${tableCellStyle}  ${tableDataStyle}`}>
-                        <input 
-                        type="text" 
-                        id="extraPaymentOffer"
-                        name="extraPaymentOffer"
-                        className={inputClasses}
-                        placeholder='Extra payment offer'
-                        value={calcs.extraPaymentOffer}
-                        onChange={handleChange} /> 
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 export default function CalculatorMain() {
     const navigate = useNavigate()
     return (
-      <div className="container d-flex flex-column justify-content-center gap-4">
+      <div className="mt-20 container d-flex flex-column justify-content-center gap-4">
         <div className="flex col gap-1">
           <div className="justify-content-center">
             <Link to="/normal-calculator">

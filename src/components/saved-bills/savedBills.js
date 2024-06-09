@@ -52,7 +52,7 @@ export default function SavedBills(){
     })
     return(
         <div>
-            <div className="container flex-row gap-4">
+            <div className="mt-20 container flex-row gap-4">
                 <h1 className='text-1xl font-bold text-left py-2' >Saved Bills</h1>
                 <table className="border-collapse border border-gray-300">
                     <thead>

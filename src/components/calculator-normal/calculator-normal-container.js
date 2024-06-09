@@ -63,7 +63,7 @@ const handleSubmit= async(e)=>{
 }
 
     return(
-        <div className='formContent md:w-1/2 lg:h-screen'>
+        <div className='mt-20 formContent md:w-1/2 lg:h-screen'>
             
             <form onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-2">

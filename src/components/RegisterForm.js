@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Alert } from "reactstrap";
 import { FaUser, FaLock, FaPhone } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 // import PhoneInput from "react-phone-input-2"
 // import 'react-phone-input-2/lib/style.css'
 
@@ -42,6 +43,7 @@ export default function Register() {
 
     const [formErrors, setFormErrors] = useState("")
     const [serverErrors, setServerErrors] = useState("")
+    const [isVisible, setISVisible] = useState(false)
     const errors = {}
 
     const validateErrors = () => {
@@ -129,26 +131,14 @@ export default function Register() {
                             name="username"
                             id="username"
                             value={form.username}
-                            placeholder="Enter email/password" 
+                            placeholder="Enter your name" 
                             onChange={handleChange}
                             /> 
                             <FaUser className="icon"/>
                     </div>
                     {serverErrors && serverErrors.findErrors("username") && <Alert color="danger">{serverErrors.findErrors("username")}</Alert>}
                     {formErrors.username && <Alert color="danger">{formErrors.username}</Alert>}
-                    <div className="input-box">
-                        <input 
-                            type="password"
-                            name="password"
-                            id="password"
-                            value={form.password}
-                            placeholder="Enter password" 
-                            onChange={handleChange}
-                            />
-                            <FaLock className="icon"/>
-                    </div>
-                    {formErrors.password && <Alert color="danger">{formErrors.password}</Alert>}
-                    {serverErrors && serverErrors.findErrors("password") && <Alert color="danger">{serverErrors.findErrors("password")}</Alert>}
+                    
                     <div className="input-box">
                         <input 
                             type="text"
@@ -162,6 +152,22 @@ export default function Register() {
                     </div>
                     {formErrors.email && <Alert color="danger">{formErrors.email}</Alert>}
                     {serverErrors && serverErrors.findErrors("email") && <Alert color="danger">{serverErrors.findErrors("email")}</Alert>}
+                    <div className="input-box">
+                        <input 
+                            type={isVisible ? "text" : "password"}
+                            name="password"
+                            id="password"
+                            value={form.password}
+                            placeholder="Enter password" 
+                            onChange={handleChange}
+                            />
+                             <div onClick={() => {setISVisible(!isVisible)}}>
+                                {isVisible ? <MdVisibilityOff className="visible-icon"/> : <MdVisibility className="visible-icon"/>}
+                            </div>
+                            <FaLock className="icon"/>
+                    </div>
+                    {formErrors.password && <Alert color="danger">{formErrors.password}</Alert>}
+                    {serverErrors && serverErrors.findErrors("password") && <Alert color="danger">{serverErrors.findErrors("password")}</Alert>}
                     {/* <div className="input-box">
                         <PhoneInput
                             inputStyle={{ border: "none", width: "100%", outline: "none" }}

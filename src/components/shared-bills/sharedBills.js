@@ -14,7 +14,7 @@ export default function SharedBills(){
     })
     return(
         <div>
-            <div className="container flex-row gap-4">
+            <div className="mt-20 container flex-row gap-4">
                 <h1 className='text-1xl font-bold text-left py-2' >Shared Bills</h1>
                 <table className="border-collapse border border-gray-300">
                     <thead>

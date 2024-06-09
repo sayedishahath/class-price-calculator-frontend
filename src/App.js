@@ -20,6 +20,7 @@ import { useAuth } from './context/AuthContext';
 import { startGetMyBill } from './actions/billAction';
 import { startGetUsers } from './actions/usersAction';
 import { LuLogOut } from "react-icons/lu";
+import NavBar from './NavBar';
 
 function App() {
 
@@ -69,6 +70,9 @@ function App() {
   return (
     <div className="App container">
       {location.pathname !=='/'&&
+      <NavBar calculatorType={calculatorType} handleLogout={handleLogout} user={user}/>}
+      
+      {/* {location.pathname !=='/'&&
       <div className='flex gap-3 items-center justify-start flex-row mb-6 mt-3'>
       <img src='./edize-logo.jpg' className=' w-23 h-10' alt='logo'></img> 
       <h1 className='text-3xl font-bold' style={{ fontSize: '1.5rem' }}>
@@ -88,7 +92,7 @@ function App() {
               <LuLogOut className="logout-icon"/>
           </Link>
       </div>
-    </div>}
+    </div>} */}
       
       <Routes>
         <Route path="/" element={<Home />} />
