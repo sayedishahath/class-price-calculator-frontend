@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import axios from 'axios'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
@@ -6,9 +6,11 @@ import SchoolTable from "./school-table"
 import ClassTable from "./class-table"
 import DealDetailsTable from "./deal-details-table"
 import { useSelector,useDispatch } from "react-redux"
-import { startCreateBill } from "../../actions/billAction"
-export default function CalculatorPremium(){
+import { useParams } from "react-router-dom"
+import { startCreateBill } from "../../../actions/billAction"
+export default function SavedCalculatorNormal(){
 
+    // console.log(selectedBill)
 // const [form,setForm] = useState({
 //     schoolName:"",
 //     investementAmount:0,
@@ -41,15 +43,16 @@ export default function CalculatorPremium(){
 //     totalMinCostPerClass:0,
 //     totalQuatedCostPerClass:0
 // })
-const dispatch = useDispatch()
-const calcs = useSelector((state)=>{
-    return state.calculations
+const dispatch =useDispatch()
+const {billId} = useParams()
+const selectedBill = useSelector((state)=>{
+    return state.bills.data.find(bill=> bill._id === billId)
 })
 
 const handleSubmit= async(e)=>{
     e.preventDefault()
-        calcs.calculatorType = 'premium'
-        dispatch(startCreateBill(calcs))
+        selectedBill.calculatorType = 'standard'
+        dispatch(startCreateBill(selectedBill))
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
         //     const imgData = canvas.toDataURL('img/png')
@@ -61,7 +64,6 @@ const handleSubmit= async(e)=>{
         // })
         
 }
-  
 
     return(
         <div className='formContent md:w-1/2 lg:h-screen'>

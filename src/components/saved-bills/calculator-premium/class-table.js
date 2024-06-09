@@ -1,8 +1,9 @@
 import { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { updateTotal,addStudents, updateTotalStudents, 
         updateTotalMRPPerClass, updateTotalMinCostPerClass, updateTotalQuatedCostPerClass,calculateMRPPerClass,
-        calculateQuotedPricePerClass, calculateMinCostPerClass,calculateDiscount } from "../../actions/calculatorAction";
+        calculateQuotedPricePerClass, calculateMinCostPerClass,calculateDiscount } from "../../../actions/calculatorAction";
 export default function ClassTable(){
     const tableClass = "border border-collapse border-gray-300 text-sm mr-20";
     const cellClass = "py-1 px-1 w-[50px]";
@@ -17,6 +18,12 @@ export default function ClassTable(){
     const calcs = useSelector((state)=>{
         return state.calculations
     })
+
+    const {billId} = useParams()
+    const selectedBill = useSelector((state)=>{
+        return state.bills.data.find(bill=> bill._id === billId)
+    })
+
     // const calculateStudentsTotal = () => {
     //     const totalStudents = calcs.classes.reduce((acc, cv) => {
     //         return parseInt(acc) + parseInt(cv.students);
@@ -167,6 +174,7 @@ export default function ClassTable(){
         dispatch (addStudents({ rowIndex, name, value }));
         dispatch (calculateMRPPerClass({ rowIndex, name, value }))
         dispatch (calculateQuotedPricePerClass({ rowIndex, name, value }))
+        dispatch (calculateDiscount({ rowIndex, name, value }))
         // dispatch (calculateMinCostPerClass({ rowIndex, name, value }))
         // if (name === 'includeGSTAmount') {
         //     const newMinCostPerClass = calcs.includeGSTAmount * calcs.classes[rowIndex].students;
@@ -176,7 +184,7 @@ export default function ClassTable(){
         // }
         
         // dispatch (calculateMinCostPerClass({ rowIndex, name, value }))
-        dispatch (calculateDiscount({ rowIndex, name, value }))
+        
         
         // Calculate MRP per class for the updated class
         // const MRPperClass = calculateMRPPerClass(newClasses[rowIndex]);
@@ -218,7 +226,7 @@ export default function ClassTable(){
                 </thead>
                 <tbody>
                 
-                {calcs.classes.map((ele, index) => {
+                {selectedBill&&selectedBill.classes&&selectedBill.classes.map((ele, index) => {
                     return (
                         <tr key={index} className={`bg-white ${borderClass} ${darkBgClass} ${darkBorderClass}`}>
                             <td className={`${cellClass} `} style={{backgroundColor:"#F4EEFF"}}>
@@ -253,19 +261,19 @@ export default function ClassTable(){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents}  />
+                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={selectedBill&&selectedBill.totalStudents}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} />
+                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={selectedBill&&selectedBill.totalMRPperClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass}  />
+                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={selectedBill&&selectedBill.totalMinCostPerClass}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
-                        <td className={`${calcs.totalQuatedCostPerClass < calcs.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} />
+                        <td className={`${selectedBill&&selectedBill.totalQuatedCostPerClass < selectedBill&&selectedBill.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
+                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={selectedBill&&selectedBill.totalQuatedCostPerClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

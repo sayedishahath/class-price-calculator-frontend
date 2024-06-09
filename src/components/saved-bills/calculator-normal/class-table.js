@@ -1,8 +1,9 @@
 import { useState,useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { updateTotal,addStudents, updateTotalStudents, 
         updateTotalMRPPerClass, updateTotalMinCostPerClass, updateTotalQuatedCostPerClass,calculateMRPPerClass,
-        calculateQuotedPricePerClass, calculateMinCostPerClass,calculateDiscount } from "../../actions/calculatorAction";
+        calculateQuotedPricePerClass, calculateMinCostPerClass,calculateDiscount } from "../../../actions/billAction";
 export default function ClassTable(){
     const tableClass = "border border-collapse border-gray-300 text-sm mr-20";
     const cellClass = "py-1 px-1 w-[50px]";
@@ -13,9 +14,15 @@ export default function ClassTable(){
     const darkBorderClass = "dark:border-zinc-700";
     const narrwoCell = "width-100px"
 
+    const {billId} =useParams()
     const dispatch = useDispatch()
     const calcs = useSelector((state)=>{
         return state.calculations
+    })
+
+    const selectedBill = useSelector((state)=>{
+        return state.bills.data.find(bill=> bill._id === billId)
+
     })
     // const calculateStudentsTotal = () => {
     //     const totalStudents = calcs.classes.reduce((acc, cv) => {
@@ -66,7 +73,7 @@ export default function ClassTable(){
     // }
 
     useEffect(() => {
-        let totalStudents = calcs.classes.reduce((acc, cv) => parseInt(acc) + parseInt(cv.students), 0);
+        let totalStudents = selectedBill&&selectedBill.classes&&selectedBill.classes.reduce((acc, cv) => parseInt(acc) + parseInt(cv.students), 0);
         if (isNaN(totalStudents)) {
             totalStudents ='-'
         } else {
@@ -74,7 +81,7 @@ export default function ClassTable(){
         }
         dispatch(updateTotalStudents(totalStudents));
     
-        let totalMRPperClass = calcs.classes.reduce((acc, cv) => acc + cv.MRPperClass, 0);
+        let totalMRPperClass = selectedBill&&selectedBill.classes&&selectedBill.classes.reduce((acc, cv) => acc + cv.MRPperClass, 0);
         if (isNaN(totalMRPperClass)) {
             totalMRPperClass ='-'
         } else {
@@ -82,7 +89,7 @@ export default function ClassTable(){
         }
         dispatch(updateTotalMRPPerClass(totalMRPperClass));
     
-        let totalMinCostPerClass = calcs.classes.reduce((acc, cv) => acc + cv.minCostPerClass, 0);
+        let totalMinCostPerClass = selectedBill&&selectedBill.classes&&selectedBill.classes.reduce((acc, cv) => acc + cv.minCostPerClass, 0);
         if (isNaN(totalMinCostPerClass)) {
             totalMinCostPerClass ='-'
         } else {
@@ -90,14 +97,14 @@ export default function ClassTable(){
         }
         dispatch(updateTotalMinCostPerClass(totalMinCostPerClass));
     
-        let totalQuatedCostPerClass = calcs.classes.reduce((acc, cv) => acc + cv.quatedCostPerClass, 0);
+        let totalQuatedCostPerClass = selectedBill&&selectedBill.classes&&selectedBill.classes.reduce((acc, cv) => acc + cv.quatedCostPerClass, 0);
         if (isNaN(totalQuatedCostPerClass)) {
             totalQuatedCostPerClass ='-'
         } else {
             totalQuatedCostPerClass=totalQuatedCostPerClass;
         }
         dispatch(updateTotalQuatedCostPerClass(totalQuatedCostPerClass));
-      }, [calcs.classes]);
+      }, [selectedBill&&selectedBill.classes&&selectedBill.classes]);
 
     // const totalStudentsValue = calcs.totalStudents;
     // const totalMRPperClassValue = calcs.totalMRPperClass;
@@ -154,17 +161,17 @@ export default function ClassTable(){
     // }
     useEffect(() => {
         const updateMinCostPerClass = () => {
-          calcs.classes.forEach((classData, index) => {
-            const newMinCostPerClass = calculateMinCostPerClass(classData, calcs.includeGSTAmount);
+            selectedBill&&selectedBill.classes&&selectedBill.classes.forEach((classData, index) => {
+            const newMinCostPerClass = calculateMinCostPerClass(classData, selectedBill&&selectedBill.includeGSTAmount);
             dispatch(calculateMinCostPerClass({ rowIndex: index, minCostPerClass: newMinCostPerClass }));
           });
         };
       
         updateMinCostPerClass();
-      }, [calcs.includeGSTAmount]);
+      }, [selectedBill&&selectedBill.includeGSTAmount]);
     const handleChange = (e, rowIndex) => {
         const { name, value } = e.target;
-        dispatch (addStudents({ rowIndex, name, value }));
+        dispatch (addStudents({ rowIndex, name, value}));
         dispatch (calculateMRPPerClass({ rowIndex, name, value }))
         dispatch (calculateQuotedPricePerClass({ rowIndex, name, value }))
         // dispatch (calculateMinCostPerClass({ rowIndex, name, value }))
@@ -218,7 +225,7 @@ export default function ClassTable(){
                 </thead>
                 <tbody>
                 
-                {calcs.classes.map((ele, index) => {
+                {selectedBill&&selectedBill.classes&&selectedBill.classes.map((ele, index) => {
                     return (
                         <tr key={index} className={`bg-white ${borderClass} ${darkBgClass} ${darkBorderClass}`}>
                             <td className={`${cellClass} `} style={{backgroundColor:"#F4EEFF"}}>
@@ -228,7 +235,7 @@ export default function ClassTable(){
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='MRP' name='MRP' value={ele.MRP} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input className="text-left w-[75px]"  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
+                                <input required className="text-left w-[75px]"  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
                                 <input className=" text-left w-[75px]" readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
@@ -237,7 +244,7 @@ export default function ClassTable(){
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={` ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input className="text-left w-[75px]" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
+                                <input required className="text-left w-[75px]" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
@@ -253,19 +260,19 @@ export default function ClassTable(){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents}  />
+                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={selectedBill&&selectedBill.totalStudents}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} />
+                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={selectedBill&&selectedBill.totalMRPperClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass}  />
+                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={selectedBill&&selectedBill.totalMinCostPerClass}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
-                        <td className={`${calcs.totalQuatedCostPerClass < calcs.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} />
+                        <td className={`${selectedBill&&selectedBill.totalQuatedCostPerClass < selectedBill&&selectedBill.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
+                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={selectedBill&&selectedBill.totalQuatedCostPerClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

@@ -5,7 +5,8 @@ import jsPDF from 'jspdf'
 import SchoolTable from "./school-table"
 import ClassTable from "./class-table"
 import DealDetailsTable from "./deal-details-table"
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
+import { startCreateBill } from "../../actions/billAction"
 export default function CalculatorNormal(){
 
 // const [form,setForm] = useState({
@@ -40,17 +41,15 @@ export default function CalculatorNormal(){
 //     totalMinCostPerClass:0,
 //     totalQuatedCostPerClass:0
 // })
-
+const dispatch =useDispatch()
 const calcs = useSelector((state)=>{
     return state.calculations
 })
 
 const handleSubmit= async(e)=>{
     e.preventDefault()
-    try{
         calcs.calculatorType = 'standard'
-        const res = await axios.post("http://localhost:3007/bill", calcs)
-        alert('saved successfully')
+        dispatch(startCreateBill(calcs))
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
         //     const imgData = canvas.toDataURL('img/png')
@@ -60,12 +59,7 @@ const handleSubmit= async(e)=>{
         //     doc.addImage(imgData,'PNG',0,0,componentWidth,componentHeight)
         //     doc.save(`${form.schoolName}.pdf`)
         // })
-        window.print()
-        console.log(res.data)
-    }catch(err){
-        alert(err.message)
-        console.log(err)
-    }
+        
 }
 
     return(

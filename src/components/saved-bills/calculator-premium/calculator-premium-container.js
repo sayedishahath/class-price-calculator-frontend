@@ -6,8 +6,9 @@ import SchoolTable from "./school-table"
 import ClassTable from "./class-table"
 import DealDetailsTable from "./deal-details-table"
 import { useSelector,useDispatch } from "react-redux"
-import { startCreateBill } from "../../actions/billAction"
-export default function CalculatorPremium(){
+import { startCreateBill } from "../../../actions/billAction"
+import { useParams } from "react-router-dom"
+export default function SavedCalculatorPremium(){
 
 // const [form,setForm] = useState({
 //     schoolName:"",
@@ -42,14 +43,15 @@ export default function CalculatorPremium(){
 //     totalQuatedCostPerClass:0
 // })
 const dispatch = useDispatch()
-const calcs = useSelector((state)=>{
-    return state.calculations
+const {billId} = useParams()
+const selectedBill = useSelector((state)=>{
+    return state.bills.data.find(bill=> bill._id === billId)
 })
 
 const handleSubmit= async(e)=>{
     e.preventDefault()
-        calcs.calculatorType = 'premium'
-        dispatch(startCreateBill(calcs))
+        selectedBill.calculatorType = 'premium'
+        dispatch(startCreateBill(selectedBill))
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
         //     const imgData = canvas.toDataURL('img/png')

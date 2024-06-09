@@ -253,19 +253,19 @@ export default function ClassTable(){
                             <h3>Total</h3>
                         </td> 
                         <td className={`${whiteBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents} onChange />
+                            <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} onChange/>
+                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass} onChange />
+                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
                         <td className={`${calcs.totalQuatedCostPerClass < calcs.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} onChange/>
+                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

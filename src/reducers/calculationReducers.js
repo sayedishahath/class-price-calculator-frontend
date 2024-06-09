@@ -32,7 +32,6 @@ const initialState = {
     totalQuatedCostPerClass:0
 }
 export default function calculationReducer(state=initialState,action){
-    console.log('reducer recieved ',action)
     switch (action.type) {
         case 'ADD_STUDENTS':
           const { rowIndex, name, value } = action.students;

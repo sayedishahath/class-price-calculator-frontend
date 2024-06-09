@@ -14,3 +14,415 @@ code {
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-height: 100vh;
+  background: white;
+  color:#231f20 ;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-bar {
+  background: #231f20;
+}
+
+.nav-items {
+  font-size: 1.2rem;
+  color: #eaeaea;
+}
+
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-style {
+  background-color: #424874;
+  color: #231f20;
+  text-decoration: none;
+  border: none;
+  width: 15%;
+  height: 40px;
+  font-size: 16px;
+  accent-color: none;
+}
+
+.link-style {
+  color: #231f20;
+}
+
+.otp-input-box {
+  margin-left: 20px;
+  /* border-radius: 10px; */
+}
+
+/* login and Register */
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  cursor: pointer;
+}
+
+.button {
+  width: 10%;
+  height: 45px;
+  background: #424874;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 20px;
+  /* color: #231f20; */
+  font-weight: 500;
+}
+
+.profile-icon {
+  position: absolute;
+  right: 20px;
+  top: 9%;
+  /* transform: translateY(-50%); */
+  font-size: 30px;
+  color: #424874;
+}
+
+.cart-icon {
+  position: absolute;
+  right: 70px;
+  top: 9%;
+  /* transform: translateY(-50%); */
+  font-size: 30px;
+  color: #424874;
+}
+
+.logout-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  /* transform: translateY(-50%); */
+  font-size: 30px;
+  color: #424874;
+}
+
+.logout-text {
+  position: absolute;
+  right: 60px;
+  top: 53%;
+  font-weight: 400;
+}
+
+/* Address and Order Card */
+
+.address-order-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+}
+
+.address-order-card .card {
+  width: 20rem;
+  height: 10rem;
+}
+
+.card .icon {
+  color: #424874;
+  font-size: 50px;
+  /* min-height: 30vh; */
+}
+
+.card .name {
+  font-size: 25px;
+}
+
+/* Address card */
+
+.address-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
+.address-card .card {
+  width: 20rem;
+  height: 15rem;
+}
+
+.card .add-address {
+  position: absolute;
+  top: 120px; /* adjust the value to your desired position */
+  left: 0;
+  /* text-align: center; */
+  width: 100%;
+  font-size: 20px;
+}
+
+.address-card button {
+  border: none;
+}
+
+.add-button {
+  font-size: 50px;
+  min-height: 23vh;
+}
+
+.card .edit-delete-button {
+  font-size: 15px;
+  margin-top: 500px;
+  color: #231f20;
+}
+
+/* Account card */
+
+.account-card {
+  width: 50%;
+  /* height: px; */
+  margin-left: 25%;
+  margin-top: 50px;
+  text-align: left;
+  gap: 10px;
+}
+
+.account-card .card {
+  width: 50rem;
+  height: 5rem;
+  margin-bottom: 10px;
+}
+
+/* Login and register */
+
+.wrapper {
+  width: 420px;
+  background: #fff; 
+  /* background: transparent; */
+  /* border: 2px solid rgba(255, 255, 255, .2); */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, .2); */
+  backdrop-filter: blur(30px);
+  color: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+  border-color: #231f20;
+  border: 2px solid #424874;
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+  color: #231f20;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+  border-color: #fff;
+  color: #eaeaea;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #231f20;
+  padding: 20px 45px 20px 20px;
+  border-color: #424874;
+}
+
+.input-box input::placeholder {
+  color: #231f20;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;;
+}
+
+.input-box .phone-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #231f20;
+  padding: 20px 45px 20px 20px;
+  border-color: #424874;
+}
+
+/* .input-box .phone-input .form-control {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  outline: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #231f20;
+  padding: 20px 45px 20px 20px;
+  border-color: #ad974f;
+} */
+
+div.selected-flag {
+  border: none;
+}
+
+div.flag-dropdown {
+  border: 10;
+  border-color: #231f20;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #424874;
+}
+
+.input-box .visible-icon {
+  position: absolute;
+  right: 45px;
+  top: 53%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #424874;
+}
+
+.wrapper .remember-forgot {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  justify-content: 'flex-end';
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+  color: #231f20;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.remember-forgot label input {
+  accent-color: #231f20;
+  margin-right: 4px;
+  color: #231f20;
+}
+
+.remember-forgot p {
+  color: #231f20;
+  text-decoration: none;
+}
+
+.remember-forgot a :hover {
+  text-decoration: underline;
+}
+
+.wrapper .input-button {
+  width: 100%;
+  height: 45px;
+  background: #424874;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 20px;
+  /* color: #231f20; */
+  font-weight: 500;
+}
+.wrapper .input-button input :hover {
+  background: #3b82f6;
+}
+
+.wrapper .register-link {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 20px 0 15px;
+  color: #231f20;
+}
+
+.register-link label {
+  color: #231f20;
+  text-decoration: none; 
+  font-weight: 600;
+}
+
+.register-link p {
+  color: #231f20;
+  text-decoration: none;
+  /* font-weight: 600; */
+}
+
+.remember-forgot p Link :hover {
+  text-decoration: underline;
+  color: #231f20;
+}
+
+/* .otp-container {
+  @apply flex justify-between gap-2;
+}
+
+.otp-container {
+  @apply !mr-0 flex-1 py-5 outline-none;
+} */
+
+/* .content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+} */
+
+
+/* Style the checkbox container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style the checkbox input */
+.checkbox-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Style the checkbox label */
+.checkbox-container label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Style the checkbox checked state */
+.checkbox-container input[type="checkbox"]:checked + label {
+  color: #337ab7;
+  font-weight: 600;
+}
+
+/* Style the checkbox hover state */
+.checkbox-container input[type="checkbox"]:hover + label {
+  color: #23527c;
+}
