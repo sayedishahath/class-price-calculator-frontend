@@ -1,8 +1,9 @@
 import { NavItem } from "reactstrap";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate,Link,useLocation } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import { useAuth } from "./context/AuthContext";
 export default function NavBar(){
+    const location = useLocation()
     const navigate = useNavigate();
     const {user,handleLogout} = useAuth()
     return(
@@ -11,6 +12,7 @@ export default function NavBar(){
                 <div class="container-fluid">
                     <Link to='/calculator-main'> <img src='./edize-logo.jpg' className="w-23 h-10"/></Link>
                     <p>Class price calculator</p>
+                    {location.pathname!=="/register"&&
                     <button onClick={() => {
                         const confirmation = window.confirm("Are you sure to Logout")
                         if(confirmation) {
@@ -21,7 +23,7 @@ export default function NavBar(){
                         }
                         }}>
                         log-out
-                    </button>
+                    </button>}
                 </div>
             </nav>
         </>
