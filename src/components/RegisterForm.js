@@ -90,7 +90,7 @@ export default function Register() {
 
         if(Object.keys(errors).length === 0) {
             try {
-                const response = await axios.post("https://3.27.30.107:3007/api/user/register", formData)
+                const response = await axios.post("http://3.27.30.107:3007/api/user/register", formData)
                 console.log(response.data)
                 alert("Successfully Registered!")
                 setForm({
