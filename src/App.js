@@ -30,7 +30,7 @@ function App() {
   useEffect(() => {
     if(localStorage.getItem("token")) {
         (async () => {
-            const response = await axios.get("http://3.27.30.107:3007/api/user/account", {
+            const response = await axios.get("https://class-price-calculator-backend.onrender.com/api/user/account", {
                 headers : {
                     "Authorization" : localStorage.getItem("token")
                 }
@@ -38,7 +38,7 @@ function App() {
             handleLogin(response.data)
         }) ()
     }
-  }, [handleLogin])
+  }, [])
 
   useEffect(()=>{
     if(localStorage.getItem("token")&&user) {

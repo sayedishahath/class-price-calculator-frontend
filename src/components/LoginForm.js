@@ -67,7 +67,7 @@ export default function LoginForm() {
 
         if(Object.keys(errors).length === 0) {
             try {
-                const response = await axios.post("http://3.27.30.107:3007/api/user/login", formData)
+                const response = await axios.post("https://class-price-calculator-backend.onrender.com/api/user/login", formData)
                 const token = response.data.token
                 const user = response.data.user
                 localStorage.setItem("token", token)
@@ -155,48 +155,8 @@ export default function LoginForm() {
                 </form>
                 
             </div>
-            {/* <Container>
-                <Row>
-                    <Col sm="12" md={{ size: 6, offset: 3 }}>
-                    <h2>Login</h2>
-                    <Form onSubmit={handleSubmit}>
-                    {serverErrors.error && (
-                        <Alert color="danger">{serverErrors && serverErrors.error} </Alert>
-                    )}
-                        <FormGroup>
-                        <Label for="username">Username</Label>
-                        <Input 
-                            type="text"
-                            name="username"
-                            id="username"
-                            value={form.username}
-                            placeholder="Enter Email/Number" 
-                            onChange={handleChange}
-                            />
-                        </FormGroup>
-                        {formErrors.username && <Alert color="danger">{formErrors.username}</Alert>}
-                        <FormGroup>
-                        <Label for="password">Password</Label>
-                        <Input 
-                            type="password"
-                            name="password"
-                            id="password"
-                            value={form.password}
-                            placeholder="Enter Password" 
-                            onChange={handleChange}
-                            />
-                        </FormGroup>
-                        {serverErrors[0] && <Alert color="danger">{serverErrors.findErrors("password")}</Alert>}
-                        {formErrors.password && <Alert color="danger">{formErrors.password}</Alert>}
-                        <Button color="primary">Login</Button>
-                    </Form>
-                    <p>Don't have an Account?</p>
-                    <Link to="/register">
-                        <Button color="primary">Register</Button>
-                    </Link>
-                    </Col>
-                </Row>
-            </Container> */}
+            
+                      
         </div>
     )
 }

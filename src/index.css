@@ -229,6 +229,8 @@ code {
   color: #231f20;
 }
 
+
+
 .wrapper .input-box {
   position: relative;
   width: 100%;
@@ -237,6 +239,8 @@ code {
   border-color: #fff;
   color: #eaeaea;
 }
+
+
 
 .input-box input {
   width: 100%;
@@ -249,6 +253,37 @@ code {
   color: #231f20;
   padding: 20px 45px 20px 20px;
   border-color: #424874;
+}
+
+.input-box {
+  position: relative;
+}
+
+.input-box input[type="text"], .input-box input[type="password"] {
+  padding: 10px;
+  font-size: 16px;
+  /* border: none;
+  border-radius: 5px; */
+  width: 100%;
+  transition: padding 0.3s; /* Add transition effect */
+}
+
+.input-box input[type="text"]:focus, .input-box input[type="password"]:focus {
+  padding: 10px 10px 10px 0; /* Remove padding on focus */
+}
+
+.input-box .placeholder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: #aaa;
+  transition: opacity 0.3s, transform 0.3s; /* Add transition effect */
+}
+
+.input-box input[type="text"]:focus + .placeholder, .input-box input[type="password"]:focus + .placeholder {
+  opacity: 0; /* Hide placeholder on focus */
+  transform: translateY(-10px); /* Move placeholder up */
 }
 
 .input-box input::placeholder {
@@ -269,6 +304,8 @@ code {
   padding: 20px 45px 20px 20px;
   border-color: #424874;
 }
+
+
 
 /* .input-box .phone-input .form-control {
   width: 100%;
@@ -348,9 +385,16 @@ div.flag-dropdown {
   font-size: 20px;
   /* color: #231f20; */
   font-weight: 500;
+  transition: background-color 0.5s
 }
-.wrapper .input-button input :hover {
+.wrapper .input-button:hover {
   background: #3b82f6;
+}
+
+.wrapper .input-button:active {
+  background-color: #424874; /* Even darker green on click */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
+  transform: translateY(2px); /* Move the button down slightly */
 }
 
 .wrapper .register-link {
