@@ -44,6 +44,8 @@ export default function Register() {
     const [formErrors, setFormErrors] = useState("")
     const [serverErrors, setServerErrors] = useState("")
     const [isVisible, setISVisible] = useState(false)
+    const [registering, setRegistering] = useState(false);
+
     const errors = {}
 
     const validateErrors = () => {
@@ -74,7 +76,7 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setRegistering(true)
         // console.log(form)
 
         const formData = {
@@ -92,6 +94,7 @@ export default function Register() {
             try {
                 const response = await axios.post("http://3.27.30.107:3007/api/user/register", formData)
                 console.log(response.data)
+                setRegistering(false)
                 alert("Successfully Registered!")
                 setForm({
                     username : "",
@@ -106,11 +109,13 @@ export default function Register() {
             } catch(err) {
                 // alert(err.message)
                 console.log(err)
+                setRegistering(false)
                 setFormErrors("")
                 setServerErrors(err.response.data.error)
                 console.log(serverErrors)
             }
         } else {
+            setRegistering(false)
             console.log(formErrors)
             setFormErrors(errors)
             setServerErrors("")
@@ -196,7 +201,7 @@ export default function Register() {
                     {/* <div className="remember-forgot">
                         <label><input type="checkbox"/>Remember me</label>
                     </div> */}
-                    <input className="input-button" type="submit" value="Register" />
+                    <input className="input-button" type="submit" value={registering?"Registering...":"Register"} />
                     <div className="register-link">
                         <label>Already have an account? Click here to </label>
                         <Link className="link-style" to="/"><p>Login</p></Link>

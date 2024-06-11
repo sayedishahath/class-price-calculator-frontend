@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const startCreateBill = (bill) =>{
+export const startCreateBill = (bill,setSaving) =>{
     return async (dispatch) =>{
         try{
             const response = await axios.post('http://3.27.30.107:3007/api/bills',bill,{
@@ -9,9 +9,11 @@ export const startCreateBill = (bill) =>{
             })
             console.log(response.data)
             dispatch(createBill(response.data))
+            setSaving(false)
             alert('created new record.')
             window.print()
         }catch(err){
+            setSaving(false)
             console.log(err)
         }
     }

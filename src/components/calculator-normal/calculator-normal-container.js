@@ -46,10 +46,13 @@ const calcs = useSelector((state)=>{
     return state.calculations
 })
 
+const [saving,setSaving] = useState(false)
+
 const handleSubmit= async(e)=>{
     e.preventDefault()
+        setSaving(true)
         calcs.calculatorType = 'standard'
-        dispatch(startCreateBill(calcs))
+        dispatch(startCreateBill(calcs,setSaving))
         // const capture = document.querySelector('.formContent')
         // html2canvas(capture).then((canvas)=>{
         //     const imgData = canvas.toDataURL('img/png')
@@ -80,7 +83,7 @@ const handleSubmit= async(e)=>{
                         </div>
                         
                     </div>
-            <input type = "submit" value='save' className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
+            <input type = "submit" value={saving?'saving...':'save'} className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
             </form>
         </div>
     )

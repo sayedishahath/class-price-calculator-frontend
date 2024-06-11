@@ -34,6 +34,7 @@ export default function LoginForm() {
         password : ""
     })
     const [isVisible, setISVisible] = useState(false)
+    const [loggingIn, setLoggingIn] = useState(false);
 
     const [formErrors, setFormErrors] = useState("")
     const [serverErrors, setServerErrors] = useState("")
@@ -58,7 +59,7 @@ export default function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setLoggingIn(true)
         const formData = {
             username : form.username,
             password : form.password
@@ -71,6 +72,7 @@ export default function LoginForm() {
                 const user = response.data.user
                 localStorage.setItem("token", token)
                 console.log(response.data)
+                setLoggingIn(false);
                 handleLogin(user)
                 alert("Successfully Logged In")
                 setFormErrors("")
@@ -95,8 +97,10 @@ export default function LoginForm() {
                 }
                 console.log(serverErrors)
                 setFormErrors("")
+                setLoggingIn(false);
             }
         } else {
+            setLoggingIn(false);
             setFormErrors(errors)
             setServerErrors("")
         }
@@ -143,7 +147,7 @@ export default function LoginForm() {
                         {/* <label><input type="checkbox"/>Remember me</label> */}
                         {/* <Link to="/forgot-password" style={{ color: '#231f20' }}><p>Forgot Password</p></Link>
                     </div> */}
-                    <input className="input-button" type="submit" value="Login" />
+                    <input className="input-button" type="submit" value={loggingIn ? "Logging in..." : "Login"} />
                     <div className="register-link">
                         <label>Don't have an account?</label>
                         <Link to="/register" style={{ color: '#231f20' }}><p>Register</p></Link>
