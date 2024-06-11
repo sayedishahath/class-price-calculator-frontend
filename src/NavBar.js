@@ -8,8 +8,8 @@ export default function NavBar(){
     const {user,handleLogout} = useAuth()
     return(
         <>
-            <nav class="navbar fixed-top bg-body-tertiary">
-                <div class="container-fluid">
+            <nav className="navbar fixed-top bg-body-tertiary">
+                <div className="container-fluid">
                     <Link to='/calculator-main'> <img src='./edize-logo.jpg' className="w-23 h-10"/></Link>
                     <p>Class price calculator</p>
                     {location.pathname!=="/register"&&
