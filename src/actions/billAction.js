@@ -2,7 +2,7 @@ import axios from 'axios'
 export const startCreateBill = (bill,setSaving) =>{
     return async (dispatch) =>{
         try{
-            const response = await axios.post('http://3.27.30.107:3007/api/bills',bill,{
+            const response = await axios.post('https://class-price-calculator-backend.onrender.com/api/bills',bill,{
                 headers:{
                     "Authorization":localStorage.getItem('token')
                 }
@@ -29,7 +29,7 @@ const createBill = (billData)=>{
 export const startGetMyBill = ()=>{
     return async (dispatch)=>{
         try{
-            const response = await axios.get('http://3.27.30.107:3007/api/bills/my-bills',{
+            const response = await axios.get('https://class-price-calculator-backend.onrender.com/api/bills/my-bills',{
                 headers:{
                     "Authorization":localStorage.getItem('token')
                 }
@@ -52,7 +52,7 @@ const getMyBill =(myBills)=>{
 export const startShareBill =(selectedBill,selectedUsers)=>{
     return async()=>{
         try{
-            const response = await axios.post(`http://3.27.30.107:3007/api/bills/${selectedBill}/share`,{userIds:selectedUsers},{
+            const response = await axios.post(`https://class-price-calculator-backend.onrender.com/api/bills/${selectedBill}/share`,{userIds:selectedUsers},{
                 headers:{
                     "Authorization":localStorage.getItem('token')
                 }
@@ -67,7 +67,7 @@ export const startShareBill =(selectedBill,selectedUsers)=>{
 export const startGetSingleBill = (id)=>{
     return async(dispatch)=>{
         try{
-            const response = await axios.get(`http://3.27.30.107:3007/api/bills/my-bills/${id}`,{
+            const response = await axios.get(`https://class-price-calculator-backend.onrender.com/api/bills/my-bills/${id}`,{
                 headers:{
                     "Authorization":localStorage.getItem('token')
                 }
