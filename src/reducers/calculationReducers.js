@@ -18,11 +18,11 @@ const initialState = {
     singleTermPayment:0,
     firstPayment:0,
     classes:[
-        { class: 6, MRP: 12999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 7, MRP: 13999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 8, MRP: 14999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 9, MRP: 15999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
-        { class: 10, MRP: 16999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0},
+        { class: 6, MRP: 13999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 7, MRP: 14999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 8, MRP: 15999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 9, MRP: 16999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
+        { class: 10, MRP: 17999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0},
         { class: 11, MRP: 22999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 },
         { class: 12, MRP: 24999, students: 0, MRPperClass: 0, minCostPerClass: 0, propsalPricePerStudent: 0, quatedCostPerClass: 0, discount: 0 }
     ],
@@ -30,7 +30,8 @@ const initialState = {
     totalMRPperClass:0,
     totalMinCostPerClass:0,
     totalQuatedCostPerClass:0
-}
+} 
+
 export default function calculationReducer(state=initialState,action){
     switch (action.type) {
         case 'ADD_STUDENTS':
@@ -93,22 +94,25 @@ export default function calculationReducer(state=initialState,action){
         case "CALCULATE_MIN_PRICE_PER_STUDENT":{
             // const minPricePerStudent = action.minPricePerStudent
             console.log('updating minPricePerStudent',)
-            const minPricePerStudent =   (((state.stations * 500000 + state.mentors * 200000 + 53500) /
-            state.totalStudents +
-            3000) *
-            1.1 -
-          state.investementAmount / state.totalStudents).toFixed(2)
+        //     const minPricePerStudent =   (((state.stations * 500000 + state.mentors * 200000 + 53500) /
+        //     state.totalStudents +
+        //     3000) *
+        //     1.1 -
+        //   state.investementAmount / state.totalStudents).toFixed(2)
+
+            const minPricePerStudent = (((((215000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
             return {...state,minPricePerStudent:minPricePerStudent}
         }
 
         case "CALCULATE_PREMIUM_MIN_PRICE_PER_STUDENT":{
             // const minPricePerStudent = action.minPricePerStudent
             console.log('updating minPricePerStudent',)
-            const minPricePerStudent =   (((state.stations * 215000 + state.mentors * 200000 + 53500) /
-            state.totalStudents +
-            3000) *
-            1.1 -
-          state.investementAmount / state.totalStudents).toFixed(2)
+        //     const minPricePerStudent =   (((state.stations * 215000 + state.mentors * 200000 + 53500) /
+        //     state.totalStudents +
+        //     3000) *
+        //     1.1 -
+        //   state.investementAmount / state.totalStudents).toFixed(2)
+            const minPricePerStudent = (((((500000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
             return {...state,minPricePerStudent:minPricePerStudent}
         }
         case "CALCULATE_INCLUDE_GST_AMOUNT":{
