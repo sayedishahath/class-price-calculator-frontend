@@ -74,14 +74,11 @@ const handleSubmit= async(e)=>{
                             <SchoolTable />
                         </div>
                         <div className="">
-                            <div>
-                                <DealDetailsTable />
-                            </div>
-                            <div className="py-2">
-                                <ClassTable  />
-                            </div>
+                            <DealDetailsTable />
                         </div>
-                        
+                    </div>
+                    <div className="py-2">
+                        <ClassTable  />
                     </div>
             <input type = "submit" value={saving?'saving...':'save'} className="uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}}/>
             </form>

@@ -8,7 +8,7 @@ export default function CalculatorMain() {
         <div className="flex col gap-1">
           <div className="justify-content-center">
             <Link to="/normal-calculator">
-            <div className="card h-100 w-100 p-2">
+            <div className="card h-100 w-100 p-2 hover:bg-gray-100 hover:text-gray-700">
                 {/* Card 1content here */}
                 <p>Standard calculator</p>
             </div>
@@ -16,7 +16,7 @@ export default function CalculatorMain() {
           </div>
           <div className="justify-content-center">
             <Link to="/premium-calculator">
-            <div className="card h-100 w-100 p-2">
+            <div className="card h-100 w-100 p-2 hover:bg-gray-100 hover:text-gray-700">
                 {/* Card 2 content here */}
                 <p>Premium calculator</p>
             </div>
@@ -26,7 +26,7 @@ export default function CalculatorMain() {
         <div className='flex col gap-1'>
           <div className="justify-content-center">
             <Link to="/saved-bills">
-            <div className="card h-100 w-100 p-2">
+            <div className="card h-100 w-100 p-2 hover:bg-gray-100 hover:text-gray-700">
                 {/* Card 1content here */}
                 <p>Saved Bills</p>
             </div>
@@ -34,7 +34,7 @@ export default function CalculatorMain() {
           </div>
           <div className="justify-content-center">
             <Link to="/shared-bills">
-            <div className="card h-100 w-100 p-2">
+            <div className="card h-100 w-100 p-2 hover:bg-gray-100 hover:text-gray-700">
                 {/* Card 1content here */}
                 <p>Shared Bills</p>
             </div>

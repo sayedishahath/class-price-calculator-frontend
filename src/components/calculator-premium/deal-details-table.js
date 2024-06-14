@@ -4,8 +4,8 @@ import { addDealDetails,calculatePremiumMinPricePerStudent,calculateincludeGSTAm
         calculateminDealValue,calculateBufferValue,calculateProposedDealValue,
         calculateTotalDiscountValue,calculateSingleTermPayment,calculateFirstPayment} from "../../actions/calculatorAction";
 export default function DealDetailsTable() {
-  const tableCellStyle = "px-2 py-3 whitespace-nowrap text-sm";
-  const firstTableCellStyle = "px-2 py-2 whitespace-nowrap text-sm";
+  const tableCellStyle = "px-2 py-3 whitespace-nowrap text-sm p-0";
+  const firstTableCellStyle = "px-2 py-2 whitespace-nowrap text-sm p-0";
   const tableHeaderStyle = "font-medium text-zinc-900 text-left";
   const tableDataStyle = "text-zinc-500";
   const rowClass = "bg-green-200";
@@ -159,9 +159,9 @@ export default function DealDetailsTable() {
   return (
     
       // <div className="overflow-hidden bg-white shadow-md rounded-lg">
-        <div className="flex flex-col lg:flex-row justify-left gap-1">
-            <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-zinc-200 border border-gray-300">
+        <div className="flex flex-col lg:flex-col justify-left gap-1">
+            <div className="">
+            <table className="min-w-auto divide-y divide-zinc-200 border border-gray-300">
               <tbody className="divide-y divide-zinc-200" style={{  backgroundColor:"#DCD6F7"}}>
                 <tr>
                   <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
@@ -226,10 +226,10 @@ export default function DealDetailsTable() {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${firstTableCellStyle} py-3 ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle} ${tableHeaderStyle}`}>
                     <label htmlFor="bufferValue">Buffer Value</label>
                   </td>
-                  <td className={`${calcs.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle} py-3 ${tableDataStyle}`}>
+                  <td className={`${calcs.bufferValue < 0 ? 'bg-red-500' : 'bg-green-500'} ${firstTableCellStyle}  ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -241,12 +241,12 @@ export default function DealDetailsTable() {
                   </td>
                 </tr>
                 <tr>
-                  <td className={`${firstTableCellStyle} py-3 ${tableHeaderStyle}`}>
+                  <td className={`${firstTableCellStyle}  ${tableHeaderStyle}`}>
                     <label htmlFor="totalDiscountValue">
                       Total Deal Discount
                     </label>
                   </td>
-                  <td className={`${firstTableCellStyle} py-3 ${tableDataStyle}`}>
+                  <td className={`${firstTableCellStyle}  ${tableDataStyle}`}>
                     <input
                       readOnly="true"
                       type="text"
@@ -264,7 +264,7 @@ export default function DealDetailsTable() {
            <div className="overflow-x-auto">
             {/* <h3 className="mt-0">Extra Notes:</h3> */}
 
-            <table className="min-w-full divide-y divide-zinc-200 border border-gray-300">
+            <table className="min-w-auto divide-y divide-zinc-200 border border-gray-300">
               <tbody className="divide-y divide-zinc-200" style={{  backgroundColor:"#DCD6F7"}}>
                 <tr>
                   <td className={`${tableCellStyle} ${tableHeaderStyle}`}>

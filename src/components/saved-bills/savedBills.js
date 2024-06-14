@@ -69,13 +69,13 @@ export default function SavedBills(){
                                 <td className="border border-gray-300 py-2 px-4">{bill.schoolName}</td>
                                 <td className="border border-gray-300 py-2 px-4">{bill.calculatorType}</td>
                                 <td className="border border-gray-300 py-2 px-4">
-                                    <Link to={`/saved-bills/${bill._id}/${bill.calculatorType}`}>
-                                        <button className="border border-gray-300 rounded-md py-2 px-4">
+                                    <Link to={`/saved-bills/${bill._id}/${bill.calculatorType}`} className="px-2">
+                                        <button className="border border-gray-300 rounded-md py-2 px-4 hover:bg-gray-100 hover:text-gray-700">
                                             view
                                         </button>
                                     </Link>
                                 
-                                    <button className="border border-gray-300 rounded-md py-2 px-4" onClick={()=>{handleOpenModal(bill._id)}}>Share</button>
+                                    <button className="border border-gray-300 rounded-md py-2 px-4 hover:bg-gray-100 hover:text-gray-700" onClick={()=>{handleOpenModal(bill._id)}}>Share</button>
                                 </td>
                             </tr>
                             )

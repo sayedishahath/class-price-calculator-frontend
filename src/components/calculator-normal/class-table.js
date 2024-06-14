@@ -222,7 +222,7 @@ export default function ClassTable(){
                     return (
                         <tr key={index} className={`bg-white ${borderClass} ${darkBgClass} ${darkBorderClass}`}>
                             <td className={`${cellClass} `} style={{backgroundColor:"#F4EEFF"}}>
-                                <input className="text-left w-[75px]" readOnly="true" type="Number" id='class' name='class' value={ele.class} onChange={(e) => {handleChange(e, index)}} />
+                                <input className="text-left w-[50px]" readOnly="true" type="Number" id='class' name='class' value={ele.class} onChange={(e) => {handleChange(e, index)}} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
                                 <input className=" text-left w-[75px]" readOnly="true" type="Number" id='MRP' name='MRP' value={ele.MRP} onChange={(e) => handleChange(e, index)} />
@@ -231,19 +231,19 @@ export default function ClassTable(){
                                 <input required className="text-left w-[75px]"  type="Number" id='students' name='students' value={ele.students} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input className=" text-left w-[75px]" readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
+                                <input className=" text-left w-[98px]" readOnly="false" type="Number" id='MRPperClass' name='MRPperClass' value={ele.MRPperClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`}style={{backgroundColor:"#F4EEFF"}}>
-                                <input className=" text-left w-[75px]" readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
+                                <input className=" text-left w-[98px]" readOnly="true" type="Number" id='minCostPerClass' name='minCostPerClass' value={ele.minCostPerClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={` ${cellClass}`} style={{backgroundColor:"#DCD6F7"}}>
-                                <input required className="text-left w-[75px]" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
+                                <input required className="text-left w-[90px]" type="Number" id='propsalPricePerStudent' name='propsalPricePerStudent' value={ele.propsalPricePerStudent} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input className=" text-left w-[75px]" readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
+                                <input className=" text-left w-[90px]" readOnly="true" type="Number" id='quatedCostPerClass' name='quatedCostPerClass' value={ele.quatedCostPerClass} onChange={(e) => handleChange(e, index)} />
                             </td>
                             <td className={`${cellClass}`} style={{backgroundColor:"#F4EEFF"}}>
-                                <input className="text-left w-[75px]" readOnly="true" type="Number" id='discount' name='discount' value={ele.discount} onChange={(e) => handleChange(e, index)} />
+                                <input className="text-left w-[90px]" readOnly="true" type="Number" id='discount' name='discount' value={ele.discount} onChange={(e) => handleChange(e, index)} />
                             </td>
                         </tr>
                     );
@@ -256,16 +256,16 @@ export default function ClassTable(){
                             <input className="text-left w-[75px]" type="text" id ="totalStudents" name="totalStudents" value={calcs.totalStudents}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} />
+                            <input className="text-left w-[98px]" type="text" id ="totalMRPperClass" name="totalMRPperClass" value={calcs.totalMRPperClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
-                            <input className="text-left w-[75px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass}  />
+                            <input className="text-left w-[98px]" type="text" id ="totalMinCostPerClass" name="totalMinCostPerClass" value={calcs.totalMinCostPerClass}  />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             
                         </td>
                         <td className={`${calcs.totalQuatedCostPerClass < calcs.totalMinCostPerClass ? 'bg-red-500' : 'bg-green-500'} ${yellowBgClass} ${cellClass}`} >
-                            <input className="text-left w-[75px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} />
+                            <input className="text-left w-[90px]" type="text" id ="totalQuatedCostPerClass" name="totalQuatedCostPerClass" value={calcs.totalQuatedCostPerClass} />
                         </td>
                         <td className={`${yellowBgClass} ${cellClass}`}>
             

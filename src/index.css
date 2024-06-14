@@ -388,7 +388,10 @@ div.flag-dropdown {
   transition: background-color 0.5s
 }
 .wrapper .input-button:hover {
-  background: #3b82f6;
+  background: #2a2a72;
+}
+.save-button:hover {
+  background: #2a2a72;
 }
 
 .wrapper .input-button:active {
