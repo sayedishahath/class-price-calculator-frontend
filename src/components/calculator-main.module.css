@@ -1,0 +1,12 @@
+@media only screen and(max-width:480px) {
+    .container {
+        width: 100%;
+    }
+    .card {
+        display: block;
+        width: 100%;
+    }
+    .cardContainer {
+        display: block;
+    }
+}

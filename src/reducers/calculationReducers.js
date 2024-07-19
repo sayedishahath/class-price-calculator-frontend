@@ -100,7 +100,7 @@ export default function calculationReducer(state=initialState,action){
         //     1.1 -
         //   state.investementAmount / state.totalStudents).toFixed(2)
 
-            const minPricePerStudent = (((((215000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
+            const minPricePerStudent = (((((300000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
             return {...state,minPricePerStudent:minPricePerStudent}
         }
 
@@ -112,7 +112,7 @@ export default function calculationReducer(state=initialState,action){
         //     3000) *
         //     1.1 -
         //   state.investementAmount / state.totalStudents).toFixed(2)
-            const minPricePerStudent = (((((500000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
+            const minPricePerStudent = (((((430000*state.stations)+(200000*state.mentors)+53500)/state.totalStudents)+3000)*1.1)-(state.investementAmount/state.totalStudents).toFixed(2)
             return {...state,minPricePerStudent:minPricePerStudent}
         }
         case "CALCULATE_INCLUDE_GST_AMOUNT":{

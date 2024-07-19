@@ -67,7 +67,6 @@ const handleSubmit= async(e)=>{
 
     return(
         <div className='mt-20 formContent md:w-1/2 lg:h-screen'>
-            
             <form onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-2">
                         <div className="" >
@@ -82,7 +81,10 @@ const handleSubmit= async(e)=>{
                     </div>
                         
                     
-            <input type = "submit" value={saving?'saving...':'save'} className="save-button uppercase  py-2 px-4 rounded mt-2 mb-2" style={{backgroundColor:"#424874" , color:"#F4EEFF"}} />
+            <input type = "submit" value={saving?'saving...':'save'} className="save-button uppercase  py-2 px-4 rounded mt-2 mb-2" 
+            style={{backgroundColor:"#DCD6F7" ,
+             color:"black"
+             }} />
 
             </form>
         </div>

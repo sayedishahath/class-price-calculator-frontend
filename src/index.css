@@ -30,6 +30,10 @@ body {
   color:#231f20 ;
 }
 
+.calculator-bg{
+  background: #2a2a72;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -472,4 +476,8 @@ div.flag-dropdown {
 /* Style the checkbox hover state */
 .checkbox-container input[type="checkbox"]:hover + label {
   color: #23527c;
+}
+
+table{
+  border-radius: 20px;
 }

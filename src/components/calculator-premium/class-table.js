@@ -204,7 +204,7 @@ export default function ClassTable(){
     return (
         <div className="">
             <table className={tableClass}>
-                <thead className="text-xs uppercase " style={{ backgroundColor: '#424874' ,color:"#F4EEFF"} }>
+                <thead className="text-xs uppercase " style={{ backgroundColor: '#bec3c7' ,color:"black"} }>
                     <tr>
                         <th scope="col" className={cellClass}>Class</th>
                         <th scope="col" className={cellClass}>MRP</th>

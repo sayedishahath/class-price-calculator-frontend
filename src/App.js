@@ -67,32 +67,18 @@ function App() {
       dispatch(resetState());
     }
   }, [location, navigate, dispatch]);
+
+  useEffect(() => {
+    if (location.pathname === '/normal-calculator' || location.pathname === '/premium-calculator') {
+      document.body.classList.add('calculator-bg');
+    } else {
+      document.body.classList.remove('calculator-bg');
+    }
+  }, [location]);
   return (
-    <div className="App container">
+    <div className="App container" >
       {location.pathname !=='/'&&
       <NavBar calculatorType={calculatorType} handleLogout={handleLogout} user={user}/>}
-      
-      {/* {location.pathname !=='/'&&
-      <div className='flex gap-3 items-center justify-start flex-row mb-6 mt-3'>
-      <img src='./edize-logo.jpg' className=' w-23 h-10' alt='logo'></img> 
-      <h1 className='text-3xl font-bold' style={{ fontSize: '1.5rem' }}>
-        Class Price Calculator {calculatorType}
-      </h1>
-      <div className="text-end">
-          <p className='logout-text'>Logout</p>
-          <Link className="button" onClick={() => {
-              const confirmation = window.confirm("Are you sure to Logout")
-              if(confirmation) {
-                  localStorage.removeItem("token")
-                  handleLogout()
-                  navigate("/")
-                  window.location.reload()
-              }
-              }}>
-              <LuLogOut className="logout-icon"/>
-          </Link>
-      </div>
-    </div>} */}
       
       <Routes>
         <Route path="/" element={<Home />} />
