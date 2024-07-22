@@ -85,6 +85,26 @@ const getSingleBill = (singleBill)=>{
     }
 }
 
+export const startDeleteSingleBill = (id)=>{
+    return async(dispatch)=>{
+        try{
+            const response = await axios.delete(`https://class-price-calculator-backend.onrender.com/api/bills/my-bills/${id}`,{
+                headers:{
+                    "Authorization":localStorage.getItem('token')
+                }
+            })
+            dispatch(deleteSingleBill(response.data))
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+const deleteSingleBill = (singleBill)=>{
+    return{
+        type:"DELETE_SINGLE_BILL",
+        payload:singleBill
+    }
+}
 
 export const addStudents = (students,billId)=>{
     return {

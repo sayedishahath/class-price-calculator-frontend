@@ -3,8 +3,9 @@ import { useState } from "react";
 import ShareBillModal from "./share-bill-modal"
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useSelector,useDispatch } from "react-redux";
-import { startShareBill } from "../../actions/billAction";
+import { startDeleteSingleBill, startShareBill } from "../../actions/billAction";
 import { useAuth } from "../../context/AuthContext";
+import { MdDelete } from "react-icons/md";
 export default function SavedBills(){
     const dispatch = useDispatch()
     // const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +44,13 @@ export default function SavedBills(){
         dispatch(startShareBill(selectedBill,selectedUsers))
         console.log('Sharing bill with:', selectedUsers);
     };
+
+    const handleDelete = (billId) =>{
+       const confirmation = window.confirm("are you sure?")
+       if(confirmation){
+        dispatch(startDeleteSingleBill(billId))
+       }
+    }
    
 
     const myBills = useSelector((state)=>{
@@ -76,6 +84,9 @@ export default function SavedBills(){
                                     </Link>
                                 
                                     <button className="border border-gray-300 rounded-md py-2 px-4 hover:bg-gray-100 hover:text-gray-700" onClick={()=>{handleOpenModal(bill._id)}}>Share</button>
+                                    <button className="py-2 px-2 text-lg" onClick={()=>{
+                                        handleDelete(bill._id)
+                                    }}><MdDelete /></button>
                                 </td>
                             </tr>
                             )
